@@ -1,0 +1,6 @@
+# npm 安装的依赖
+node_modules/
+
+# 编译生成的文件
+dist/
+*.tsbuildinfo
