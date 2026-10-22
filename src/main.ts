@@ -1,0 +1,1 @@
+console.log("SVG 编辑器项目初始化成功");

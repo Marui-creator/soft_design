@@ -1,0 +1,34 @@
+{
+  "name": "soft_design",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "cli": "tsx src/main.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marui-creator/soft_design.git"
+  },
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Marui-creator/soft_design/issues"
+  },
+  
+  "homepage": "https://github.com/Marui-creator/soft_design#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
