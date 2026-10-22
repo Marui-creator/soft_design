@@ -11,12 +11,10 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Marui-creator/soft_design.git"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/Marui-creator/soft_design/issues"
   },
-  
   "homepage": "https://github.com/Marui-creator/soft_design#readme",
   "devDependencies": {
     "@types/node": "^26.6.5",

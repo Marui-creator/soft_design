@@ -1,1 +1,4 @@
-console.log("SVG 编辑器项目初始化成功");
+import { CliApplication } from "./cli/CliApplication";
+
+const application = new CliApplication();
+application.run();
