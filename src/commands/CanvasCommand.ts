@@ -1,0 +1,22 @@
+import { Command } from "./Command";
+import { EditorSession } from "./EditorSession";
+
+export class CanvasCommand implements Command {
+  public constructor(private readonly session: EditorSession) {}
+
+  public execute(args: readonly string[]): string {
+    const document = this.session.getDocument();
+
+    if (args.length === 0) {
+      return `canvas ${document.getWidth()}x${document.getHeight()}`;
+    }
+
+    if (args.length !== 2) {
+      throw new Error("usage: canvas [w h]");
+    }
+
+    document.resize(Number(args[0]), Number(args[1]));
+
+    return `canvas resized to ${document.getWidth()}x${document.getHeight()}`;
+  }
+}
