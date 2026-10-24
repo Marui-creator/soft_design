@@ -1,74 +1,13 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
 import { Command } from "../commands/Command";
-import { EditorSession } from "../commands/EditorSession";
-import { InitCommand } from "../commands/InitCommand";
-import { CanvasCommand } from "../commands/CanvasCommand";
-import { CreateCommand } from "../commands/CreateCommand";
-import { ShapeFactory } from "../model/ShapeFactory";
-import { ShowCommand } from "../commands/ShowCommand";
-import { MoveCommand } from "../commands/MoveCommand";
-import { ScaleCommand } from "../commands/ScaleCommand";
-import { CommandHistory } from "../commands/CommandHistory";
-import { HistoryEditCommand } from "../commands/HistoryEditCommand";
-import { UndoCommand } from "../commands/UndoCommand";
-import { RedoCommand } from "../commands/RedoCommand";
-import { DeleteCommand } from "../commands/DeleteCommand";
-import { SetCommand } from "../commands/SetCommand";
 import { CommandParser } from "./CommandParser";
-import { TreeCommand } from "../commands/TreeCommand";
-import { AddToCommand } from "../commands/AddToCommand";
-import { GroupCommand } from "../commands/GroupCommand";
-import { UngroupCommand } from "../commands/UngroupCommand";
-import { FrontCommand } from "../commands/FrontCommand";
-import { BackCommand } from "../commands/BackCommand";
-import { SaveCommand } from "../commands/SaveCommand";
-import { SvgFileWriter } from "../infrastructure/SvgFileWriter";
-import { ReadCommand } from "../commands/ReadCommand";
-import { SvgFileReader } from "../infrastructure/SvgFileReader";
-import { SvgXmlParser } from "../infrastructure/SvgXmlParser";
-
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
   private readonly parser = new CommandParser();
 
-  public constructor() {
-    const session = new EditorSession();
-    const history = new CommandHistory(session);
-
-    this.commands = new Map<string, Command>([
-      ["init", new InitCommand(session, history)],
-      ["canvas", new CanvasCommand(session, history)],
-      [
-        "create",
-        new HistoryEditCommand(
-          new CreateCommand(session, new ShapeFactory()),
-          history,
-        ),
-      ],
-      ["show", new ShowCommand(session)],
-      ["move", new HistoryEditCommand(new MoveCommand(session), history)],
-      ["scale", new HistoryEditCommand(new ScaleCommand(session), history)],
-      ["undo", new UndoCommand(history)],
-      ["redo", new RedoCommand(history)],
-      ["delete", new HistoryEditCommand(new DeleteCommand(session), history)],
-      ["set", new HistoryEditCommand(new SetCommand(session), history)],
-      ["tree", new TreeCommand(session)],
-      ["addto", new HistoryEditCommand(new AddToCommand(session), history)],
-      ["group", new HistoryEditCommand(new GroupCommand(session), history)],
-      ["ungroup", new HistoryEditCommand(new UngroupCommand(session), history)],
-      ["front", new HistoryEditCommand(new FrontCommand(session), history)],
-      ["back", new HistoryEditCommand(new BackCommand(session), history)],
-      ["save", new SaveCommand(session, new SvgFileWriter(), history)],
-      [
-        "read",
-        new ReadCommand(
-          session,
-          new SvgFileReader(new SvgXmlParser(new ShapeFactory())),
-          history,
-        ),
-      ],
-    ]);
+  public constructor(commands: ReadonlyMap<string, Command>) {
+    this.commands = commands;
   }
 
   public run(): void {
