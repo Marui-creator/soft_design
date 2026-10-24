@@ -1,7 +1,21 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
-
+import { Command } from "../commands/Command";
+import { EditorSession } from "../commands/EditorSession";
+import { InitCommand } from "../commands/InitCommand";
+import { CanvasCommand } from "../commands/CanvasCommand";
 export class CliApplication {
+  private readonly commands: ReadonlyMap<string, Command>;
+
+  public constructor() {
+    const session = new EditorSession();
+
+    this.commands = new Map<string, Command>([
+      ["init", new InitCommand(session)],
+      ["canvas", new CanvasCommand(session)],
+    ]);
+  }
+
   public run(): void {
     const terminal = createInterface({
       input: stdin,
@@ -20,11 +34,28 @@ export class CliApplication {
         return;
       }
 
-      if (input === "help") {
-        this.printHelp();
-      } else {
-        console.log(`error: unknown command: ${input.split(/\s+/)[0]}`);
+  try {
+    const [name, ...args] = input.split(/\s+/);
+
+    if (name === "help") {
+      if (args.length !== 0) {
+        throw new Error("usage: help");
       }
+
+      this.printHelp();
+    } else {
+      const command = this.commands.get(name!);
+
+      if (command === undefined) {
+        throw new Error(`unknown command: ${name}`);
+      }
+
+      console.log(command.execute(args));
+    }
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "unexpected error";
+    console.log(`error: ${message}`);
+  }
 
       terminal.prompt();
     });
