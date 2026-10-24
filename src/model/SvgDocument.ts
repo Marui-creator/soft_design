@@ -261,6 +261,11 @@ export class SvgDocument {
 
         const children = group.getChildren();
 
+        // 删除容器前，保留其对子图形的样式影响。
+        for (const child of children) {
+            child.inheritStylesFrom(group);
+        }
+
         this.removeShape(id);
 
         children.forEach((child, offset) => {

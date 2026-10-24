@@ -89,4 +89,21 @@ export abstract class Shape {
 
         return element;
     }
+
+    public inheritStylesFrom(source: Shape): void {
+        const sourceElement = source.toSvgElement();
+        const ownElement = this.toSvgElement();
+
+        for (const name of ["fill", "stroke", "stroke-width"]) {
+            const inherited = sourceElement.getAttribute(name);
+            const own = ownElement.getAttribute(name);
+
+            if (
+                inherited !== undefined &&
+                (own === undefined || own === "inherit")
+            ) {
+                this.setAttribute(name, inherited);
+            }
+        }
+    }
 }
