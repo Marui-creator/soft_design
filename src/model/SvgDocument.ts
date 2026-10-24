@@ -155,4 +155,19 @@ export class SvgDocument {
             throw new Error("canvas dimensions must be positive finite numbers");
         }
     }
+
+    public addTo(containerId: string, id: string): void {
+        // 先检查目标和图形，再修改关系。
+        this.getContainer(containerId);
+        const shape = this.getShape(id);
+
+        if (shape.containsId(containerId)) {
+            throw new Error(
+                `cannot move a container into its own descendant: ${id}`,
+            );
+        }
+
+        this.removeShape(id);
+        this.addShape(shape, containerId);
+    }
 }
