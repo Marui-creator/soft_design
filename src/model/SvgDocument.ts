@@ -1,6 +1,8 @@
+import { Shape } from "./Shape";
 export class SvgDocument {
   private width: number;
   private height: number;
+  private readonly shapes: Map<string, Shape> = new Map();
 
   public constructor(width = 800, height = 600) {
     this.validateSize(width, height);
@@ -33,4 +35,28 @@ export class SvgDocument {
       throw new Error("canvas dimensions must be positive finite numbers");
     }
   }
+
+  public addShape(shape: Shape): void {
+  const id = shape.getId();
+
+  if (this.shapes.has(id)) {
+    throw new Error(`id already exists: ${id}`);
+  }
+
+  this.shapes.set(id, shape);
+}
+
+public getShape(id: string): Shape {
+  const shape = this.shapes.get(id);
+
+  if (shape === undefined) {
+    throw new Error(`no such shape: ${id}`);
+  }
+
+  return shape;
+}
+
+public getShapes(): readonly Shape[] {
+  return Array.from(this.shapes.values());
+}
 }

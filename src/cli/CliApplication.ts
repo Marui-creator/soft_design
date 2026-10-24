@@ -4,6 +4,10 @@ import { Command } from "../commands/Command";
 import { EditorSession } from "../commands/EditorSession";
 import { InitCommand } from "../commands/InitCommand";
 import { CanvasCommand } from "../commands/CanvasCommand";
+import { CreateCommand } from "../commands/CreateCommand";
+import { ShapeFactory } from "../model/ShapeFactory";
+import { ShowCommand } from "../commands/ShowCommand";
+
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
 
@@ -13,6 +17,8 @@ export class CliApplication {
     this.commands = new Map<string, Command>([
       ["init", new InitCommand(session)],
       ["canvas", new CanvasCommand(session)],
+      ["create", new CreateCommand(session, new ShapeFactory())],
+      ["show", new ShowCommand(session)],
     ]);
   }
 
