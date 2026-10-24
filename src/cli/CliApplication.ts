@@ -14,9 +14,12 @@ import { HistoryEditCommand } from "../commands/HistoryEditCommand";
 import { UndoCommand } from "../commands/UndoCommand";
 import { RedoCommand } from "../commands/RedoCommand";
 import { DeleteCommand } from "../commands/DeleteCommand";
+import { SetCommand } from "../commands/SetCommand";
+import { CommandParser } from "./CommandParser";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
+  private readonly parser = new CommandParser();
 
   public constructor() {
     const session = new EditorSession();
@@ -38,6 +41,7 @@ export class CliApplication {
       ["undo", new UndoCommand(history)],
       ["redo", new RedoCommand(history)],
       ["delete", new HistoryEditCommand(new DeleteCommand(session), history)],
+      ["set", new HistoryEditCommand(new SetCommand(session), history)],
     ]);
   }
 
@@ -60,7 +64,7 @@ export class CliApplication {
       }
 
       try {
-        const [name, ...args] = input.split(/\s+/);
+        const [name, ...args] = this.parser.parse(input);
 
         if (name === "help") {
           if (args.length !== 0) {
