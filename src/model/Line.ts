@@ -95,7 +95,7 @@ export class Line extends Shape {
 
     public describe(): string {
         const lines = [
-            `line#${this.getId()}  parent=svg`,
+            `line#${this.getId()}  parent=${this.getParentDescription()}`,
             `  x1=${this.x1} y1=${this.y1} x2=${this.x2} y2=${this.y2}`,
         ];
 
@@ -127,6 +127,7 @@ export class Line extends Shape {
         copy.fill = this.fill;
         copy.strokeWidth = this.strokeWidth;
 
+        this.copyBaseTo(copy);
         return copy;
     }
 

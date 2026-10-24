@@ -91,7 +91,7 @@ export class Circle extends Shape {
 
     public describe(): string {
         const lines = [
-            `circle#${this.getId()}  parent=svg`,
+            `circle#${this.getId()}  parent=${this.getParentDescription()}`,
             `  cx=${this.cx} cy=${this.cy} r=${this.r}`,
         ];
 
@@ -122,6 +122,7 @@ export class Circle extends Shape {
         copy.stroke = this.stroke;
         copy.strokeWidth = this.strokeWidth;
 
+        this.copyBaseTo(copy);
         return copy;
     }
 
