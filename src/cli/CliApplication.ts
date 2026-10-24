@@ -9,20 +9,33 @@ import { ShapeFactory } from "../model/ShapeFactory";
 import { ShowCommand } from "../commands/ShowCommand";
 import { MoveCommand } from "../commands/MoveCommand";
 import { ScaleCommand } from "../commands/ScaleCommand";
+import { CommandHistory } from "../commands/CommandHistory";
+import { HistoryEditCommand } from "../commands/HistoryEditCommand";
+import { UndoCommand } from "../commands/UndoCommand";
+import { RedoCommand } from "../commands/RedoCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
 
   public constructor() {
     const session = new EditorSession();
+    const history = new CommandHistory(session);
 
     this.commands = new Map<string, Command>([
-      ["init", new InitCommand(session)],
-      ["canvas", new CanvasCommand(session)],
-      ["create", new CreateCommand(session, new ShapeFactory())],
+      ["init", new InitCommand(session, history)],
+      ["canvas", new CanvasCommand(session, history)],
+      [
+        "create",
+        new HistoryEditCommand(
+          new CreateCommand(session, new ShapeFactory()),
+          history,
+        ),
+      ],
       ["show", new ShowCommand(session)],
-      ["move", new MoveCommand(session)],
-      ["scale", new ScaleCommand(session)],
+      ["move", new HistoryEditCommand(new MoveCommand(session), history)],
+      ["scale", new HistoryEditCommand(new ScaleCommand(session), history)],
+      ["undo", new UndoCommand(history)],
+      ["redo", new RedoCommand(history)],
     ]);
   }
 
@@ -44,28 +57,28 @@ export class CliApplication {
         return;
       }
 
-  try {
-    const [name, ...args] = input.split(/\s+/);
+      try {
+        const [name, ...args] = input.split(/\s+/);
 
-    if (name === "help") {
-      if (args.length !== 0) {
-        throw new Error("usage: help");
+        if (name === "help") {
+          if (args.length !== 0) {
+            throw new Error("usage: help");
+          }
+
+          this.printHelp();
+        } else {
+          const command = this.commands.get(name!);
+
+          if (command === undefined) {
+            throw new Error(`unknown command: ${name}`);
+          }
+
+          console.log(command.execute(args));
+        }
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : "unexpected error";
+        console.log(`error: ${message}`);
       }
-
-      this.printHelp();
-    } else {
-      const command = this.commands.get(name!);
-
-      if (command === undefined) {
-        throw new Error(`unknown command: ${name}`);
-      }
-
-      console.log(command.execute(args));
-    }
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "unexpected error";
-    console.log(`error: ${message}`);
-  }
 
       terminal.prompt();
     });

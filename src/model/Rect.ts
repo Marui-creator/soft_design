@@ -38,6 +38,17 @@ export class Rect extends Shape {
   return lines.join("\n");
   }
 
+  public clone(): Rect {
+    return new Rect(
+        this.getId(),
+        this.x,
+        this.y,
+        this.width,
+        this.height,
+        this.fill,
+    );
+    }
+
   public getX(): number {
     return this.x;
   }
