@@ -240,4 +240,31 @@ export class SvgDocument {
             );
         }
     }
+
+    public ungroup(id: string): void {
+        const group = this.getContainer(id);
+        const parentId = group.getParentId();
+
+        if (parentId === undefined) {
+            throw new Error(`cannot ungroup top-level container: ${id}`);
+        }
+
+        const parent = this.getContainer(parentId);
+        const index = parent.getChildren().findIndex(
+            (child) => child.getId() === id,
+        );
+
+        if (index === -1) {
+            throw new Error("inconsistent parent-child relationship");
+        }
+
+        const children = group.getChildren();
+
+        this.removeShape(id);
+
+        children.forEach((child, offset) => {
+            group.removeChild(child.getId());
+            parent.insertChild(index + offset, child);
+        });
+    }
 }

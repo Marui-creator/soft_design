@@ -56,6 +56,10 @@ export abstract class Shape {
         throw new Error(`not a container: ${this.getId()}`);
     }
 
+    public insertChild(_index: number, _shape: Shape): void {
+        throw new Error(`not a container: ${this.getId()}`);
+    }
+
     public abstract move(dx: number, dy: number): void;
 
     public abstract scale(factor: number): void;

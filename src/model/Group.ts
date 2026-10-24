@@ -142,4 +142,21 @@ export class Group extends Shape {
     public isContainer(): boolean {
         return true;
     }
+
+    public insertChild(index: number, shape: Shape): void {
+        if (
+            !Number.isInteger(index) ||
+            index < 0 ||
+            index > this.children.length
+        ) {
+            throw new Error("invalid child position");
+        }
+
+        // 复用已有的关系检查，先添加到末尾。
+        this.addChild(shape);
+
+        // 再将刚添加的对象移到指定位置。
+        this.children.pop();
+        this.children.splice(index, 0, shape);
+    }
 }

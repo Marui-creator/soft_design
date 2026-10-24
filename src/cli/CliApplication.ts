@@ -19,6 +19,7 @@ import { CommandParser } from "./CommandParser";
 import { TreeCommand } from "../commands/TreeCommand";
 import { AddToCommand } from "../commands/AddToCommand";
 import { GroupCommand } from "../commands/GroupCommand";
+import { UngroupCommand } from "../commands/UngroupCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -48,6 +49,7 @@ export class CliApplication {
       ["tree", new TreeCommand(session)],
       ["addto", new HistoryEditCommand(new AddToCommand(session), history)],
       ["group", new HistoryEditCommand(new GroupCommand(session), history)],
+      ["ungroup", new HistoryEditCommand(new UngroupCommand(session), history)],
     ]);
   }
 
