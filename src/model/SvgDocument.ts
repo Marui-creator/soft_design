@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { Group } from "./Group";
 
 export class SvgDocument {
     private width: number;
@@ -169,5 +170,74 @@ export class SvgDocument {
 
         this.removeShape(id);
         this.addShape(shape, containerId);
+    }
+
+    public groupShapes(
+        newId: string,
+        ids: readonly string[],
+    ): Group {
+        if (ids.length === 0) {
+            throw new Error("group requires at least one shape");
+        }
+
+        if (this.findShape(newId) !== undefined) {
+            throw new Error(`id already exists: ${newId}`);
+        }
+
+        const selectedIds = new Set(ids);
+
+        if (selectedIds.size !== ids.length) {
+            throw new Error("duplicate shape id in group command");
+        }
+
+        const selected = ids.map((id) => this.getShape(id));
+
+        // 不允许同时选择一个容器和它的子孙。
+        for (const shape of selected) {
+            for (const other of selected) {
+                if (
+                    shape !== other &&
+                    shape.containsId(other.getId())
+                ) {
+                    throw new Error(
+                        `cannot group a container into its own descendant: ${shape.getId()}`,
+                    );
+                }
+            }
+        }
+
+        // 按原文档遍历顺序收集，避免输入参数顺序打乱同级顺序。
+        const ordered: Shape[] = [];
+        this.collectSelected(this.getShapes(), selectedIds, ordered);
+
+        const group = new Group(newId);
+
+        for (const shape of ordered) {
+            this.removeShape(shape.getId());
+            group.addChild(shape);
+        }
+
+        // 新组放到画布根级末尾。
+        this.addShape(group);
+
+        return group;
+    }
+
+    private collectSelected(
+        shapes: readonly Shape[],
+        selectedIds: ReadonlySet<string>,
+        result: Shape[],
+    ): void {
+        for (const shape of shapes) {
+            if (selectedIds.has(shape.getId())) {
+                result.push(shape);
+            }
+
+            this.collectSelected(
+                shape.getChildren(),
+                selectedIds,
+                result,
+            );
+        }
     }
 }

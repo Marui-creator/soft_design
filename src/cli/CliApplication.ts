@@ -18,6 +18,7 @@ import { SetCommand } from "../commands/SetCommand";
 import { CommandParser } from "./CommandParser";
 import { TreeCommand } from "../commands/TreeCommand";
 import { AddToCommand } from "../commands/AddToCommand";
+import { GroupCommand } from "../commands/GroupCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -46,6 +47,7 @@ export class CliApplication {
       ["set", new HistoryEditCommand(new SetCommand(session), history)],
       ["tree", new TreeCommand(session)],
       ["addto", new HistoryEditCommand(new AddToCommand(session), history)],
+      ["group", new HistoryEditCommand(new GroupCommand(session), history)],
     ]);
   }
 
