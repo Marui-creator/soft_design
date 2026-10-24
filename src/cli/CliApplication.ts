@@ -13,6 +13,7 @@ import { CommandHistory } from "../commands/CommandHistory";
 import { HistoryEditCommand } from "../commands/HistoryEditCommand";
 import { UndoCommand } from "../commands/UndoCommand";
 import { RedoCommand } from "../commands/RedoCommand";
+import { DeleteCommand } from "../commands/DeleteCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -36,6 +37,7 @@ export class CliApplication {
       ["scale", new HistoryEditCommand(new ScaleCommand(session), history)],
       ["undo", new UndoCommand(history)],
       ["redo", new RedoCommand(history)],
+      ["delete", new HistoryEditCommand(new DeleteCommand(session), history)],
     ]);
   }
 
