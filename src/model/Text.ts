@@ -67,7 +67,7 @@ export class Text extends Shape {
 
     public describe(): string {
         const lines = [
-            `text#${this.getId()}  parent=svg`,
+            `text#${this.getId()}  parent=${this.getParentDescription()}`,
             `  x=${this.x} y=${this.y}`,
             `  text=${JSON.stringify(this.content)}`,
         ];
@@ -99,6 +99,7 @@ export class Text extends Shape {
         copy.stroke = this.stroke;
         copy.strokeWidth = this.strokeWidth;
 
+        this.copyBaseTo(copy);
         return copy;
     }
 

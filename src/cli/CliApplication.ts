@@ -16,6 +16,12 @@ import { RedoCommand } from "../commands/RedoCommand";
 import { DeleteCommand } from "../commands/DeleteCommand";
 import { SetCommand } from "../commands/SetCommand";
 import { CommandParser } from "./CommandParser";
+import { TreeCommand } from "../commands/TreeCommand";
+import { AddToCommand } from "../commands/AddToCommand";
+import { GroupCommand } from "../commands/GroupCommand";
+import { UngroupCommand } from "../commands/UngroupCommand";
+import { FrontCommand } from "../commands/FrontCommand";
+import { BackCommand } from "../commands/BackCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -42,6 +48,12 @@ export class CliApplication {
       ["redo", new RedoCommand(history)],
       ["delete", new HistoryEditCommand(new DeleteCommand(session), history)],
       ["set", new HistoryEditCommand(new SetCommand(session), history)],
+      ["tree", new TreeCommand(session)],
+      ["addto", new HistoryEditCommand(new AddToCommand(session), history)],
+      ["group", new HistoryEditCommand(new GroupCommand(session), history)],
+      ["ungroup", new HistoryEditCommand(new UngroupCommand(session), history)],
+      ["front", new HistoryEditCommand(new FrontCommand(session), history)],
+      ["back", new HistoryEditCommand(new BackCommand(session), history)],
     ]);
   }
 

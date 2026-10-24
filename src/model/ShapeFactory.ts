@@ -4,6 +4,7 @@ import { Circle } from "./Circle";
 import { Ellipse } from "./Ellipse";
 import { Line } from "./Line";
 import { Text } from "./Text";
+import { Group } from "./Group";
 
 export class ShapeFactory {
     public create(type: string, args: readonly string[]): Shape {
@@ -25,6 +26,14 @@ export class ShapeFactory {
 
         if (type === "text") {
             return this.createText(args);
+        }
+
+        if (type === "g") {
+            if (args.length !== 1) {
+                throw new Error("usage: create g <id>");
+            }
+
+            return new Group(args[0]!);
         }
 
         throw new Error(

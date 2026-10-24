@@ -29,7 +29,7 @@ export class Rect extends Shape {
 
     public describe(): string {
         const lines = [
-            `rect#${this.getId()}  parent=svg`,
+            `rect#${this.getId()}  parent=${this.getParentDescription()}`,
             `  x=${this.x} y=${this.y} width=${this.width} height=${this.height}`,
         ];
 
@@ -60,6 +60,7 @@ export class Rect extends Shape {
         copy.stroke = this.stroke;
         copy.strokeWidth = this.strokeWidth;
 
+        this.copyBaseTo(copy);
         return copy;
     }
 

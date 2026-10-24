@@ -95,7 +95,7 @@ export class Ellipse extends Shape {
 
     public describe(): string {
         const lines = [
-            `ellipse#${this.getId()}  parent=svg`,
+            `ellipse#${this.getId()}  parent=${this.getParentDescription()}`,
             `  cx=${this.cx} cy=${this.cy} rx=${this.rx} ry=${this.ry}`,
         ];
 
@@ -127,6 +127,7 @@ export class Ellipse extends Shape {
         copy.stroke = this.stroke;
         copy.strokeWidth = this.strokeWidth;
 
+        this.copyBaseTo(copy);
         return copy;
     }
 
