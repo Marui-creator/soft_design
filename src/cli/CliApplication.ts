@@ -20,6 +20,8 @@ import { TreeCommand } from "../commands/TreeCommand";
 import { AddToCommand } from "../commands/AddToCommand";
 import { GroupCommand } from "../commands/GroupCommand";
 import { UngroupCommand } from "../commands/UngroupCommand";
+import { FrontCommand } from "../commands/FrontCommand";
+import { BackCommand } from "../commands/BackCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -50,6 +52,8 @@ export class CliApplication {
       ["addto", new HistoryEditCommand(new AddToCommand(session), history)],
       ["group", new HistoryEditCommand(new GroupCommand(session), history)],
       ["ungroup", new HistoryEditCommand(new UngroupCommand(session), history)],
+      ["front", new HistoryEditCommand(new FrontCommand(session), history)],
+      ["back", new HistoryEditCommand(new BackCommand(session), history)],
     ]);
   }
 

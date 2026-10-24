@@ -267,4 +267,44 @@ export class SvgDocument {
             parent.insertChild(index + offset, child);
         });
     }
+
+    public bringToFront(id: string): void {
+        this.reorderShape(id, true);
+    }
+
+    public sendToBack(id: string): void {
+        this.reorderShape(id, false);
+    }
+
+    private reorderShape(id: string, toFront: boolean): void {
+        const shape = this.getShape(id);
+        const parentId = shape.getParentId();
+
+        if (parentId !== undefined) {
+            const parent = this.getContainer(parentId);
+
+            parent.removeChild(id);
+
+            const index = toFront ? parent.getChildren().length : 0;
+            parent.insertChild(index, shape);
+
+            return;
+        }
+
+        const siblings = this.getShapes().filter(
+            (item) => item.getId() !== id,
+        );
+
+        if (toFront) {
+            siblings.push(shape);
+        } else {
+            siblings.unshift(shape);
+        }
+
+        this.shapes.clear();
+
+        for (const sibling of siblings) {
+            this.shapes.set(sibling.getId(), sibling);
+        }
+    }
 }
