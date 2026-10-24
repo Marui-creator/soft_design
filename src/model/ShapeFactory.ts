@@ -160,11 +160,6 @@ export class ShapeFactory {
             );
         }
 
-        // 暂时拒绝未处理的变换，避免读入后图形位置悄悄变化。
-        if (element.getAttribute("transform") !== undefined) {
-            throw new Error("SVG transform import is not implemented yet");
-        }
-
         const args = [
             id,
             ...names.map((name) => {
@@ -183,6 +178,8 @@ export class ShapeFactory {
         }
 
         const shape = this.create(type, args);
+
+        shape.setTransform(element.getAttribute("transform"));
 
         for (const name of ["fill", "stroke", "stroke-width"]) {
             const value = element.getAttribute(name);

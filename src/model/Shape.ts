@@ -3,6 +3,7 @@ import { SvgElement } from "./SvgElement";
 export abstract class Shape {
     private readonly id: string;
     private parentId: string | undefined;
+    private transform: string | undefined;
 
     protected constructor(id: string) {
         if (id.trim().length === 0) {
@@ -36,6 +37,7 @@ export abstract class Shape {
 
     protected copyBaseTo(copy: Shape): void {
         copy.parentId = this.parentId;
+        copy.transform = this.transform;
     }
 
     public containsId(id: string): boolean {
@@ -81,6 +83,11 @@ export abstract class Shape {
         const element = new SvgElement(tag);
         element.setAttribute("id", this.getId());
 
+
+        if (this.transform !== undefined) {
+            element.setAttribute("transform", this.transform);
+        }
+
         for (const [name, value] of Object.entries(attributes)) {
             if (value !== undefined) {
                 element.setAttribute(name, value);
@@ -105,5 +112,28 @@ export abstract class Shape {
                 this.setAttribute(name, inherited);
             }
         }
+    }
+
+    public getTransform(): string | undefined {
+        return this.transform;
+    }
+
+    public setTransform(value: string | undefined): void {
+        this.transform =
+            value === undefined || value.trim().length === 0
+                ? undefined
+                : value.trim();
+    }
+
+    public prependTransform(value: string | undefined): void {
+        if (value === undefined || value.trim().length === 0) {
+            return;
+        }
+
+        this.setTransform(
+            this.transform === undefined
+                ? value
+                : `${value} ${this.transform}`,
+        );
     }
 }

@@ -14,6 +14,10 @@ export class SvgXmlParser {
             throw new Error("root element must be <svg>");
         }
 
+        if (root.getAttribute("transform") !== undefined) {
+            throw new Error("transform on root <svg> is not supported yet");
+        }
+
         const width = this.readDimension(root, "width");
         const height = this.readDimension(root, "height");
         const document = new SvgDocument(width, height);
