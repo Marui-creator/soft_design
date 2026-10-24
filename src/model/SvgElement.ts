@@ -47,4 +47,20 @@ export class SvgElement {
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&apos;");
     }
+
+    public getTag(): string {
+        return this.tag;
+    }
+
+    public getAttribute(name: string): string | undefined {
+        return this.attributes.get(name);
+    }
+
+    public getText(): string | undefined {
+        return this.text;
+    }
+
+    public getChildren(): readonly SvgElement[] {
+        return [...this.children];
+    }
 }

@@ -35,4 +35,12 @@ export class EditorSession {
     public setFilePath(path: string): void {
         this.filePath = path;
     }
+
+    public openDocument(
+        document: SvgDocument,
+        path: string,
+    ): void {
+        this.document = document;
+        this.filePath = path;
+    }
 }
