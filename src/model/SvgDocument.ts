@@ -69,4 +69,10 @@ export class SvgDocument {
 
         return copy;
     }
+
+    public removeShape(id: string): Shape {
+        const shape = this.getShape(id);
+        this.shapes.delete(id);
+        return shape;
+    }
 }
