@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { SvgElement } from "./SvgElement";
 
 export class Text extends Shape {
     private x: number;
@@ -124,5 +125,19 @@ export class Text extends Shape {
         if (![x, y].every(Number.isFinite)) {
             throw new Error("geometry values must be finite numbers");
         }
+    }
+
+    public toSvgElement(): SvgElement {
+        const element = this.createSvgElement("text", {
+            x: this.x,
+            y: this.y,
+            fill: this.fill,
+            stroke: this.stroke,
+            "stroke-width": this.strokeWidth,
+        });
+
+        element.setText(this.content);
+
+        return element;
     }
 }

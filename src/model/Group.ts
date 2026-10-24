@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { SvgElement } from "./SvgElement";
 
 export class Group extends Shape {
     private readonly children: Shape[] = [];
@@ -158,5 +159,18 @@ export class Group extends Shape {
         // 再将刚添加的对象移到指定位置。
         this.children.pop();
         this.children.splice(index, 0, shape);
+    }
+
+    public toSvgElement(): SvgElement {
+        const element = this.createSvgElement(
+            "g",
+            Object.fromEntries(this.styles),
+        );
+
+        for (const child of this.children) {
+            element.addChild(child.toSvgElement());
+        }
+
+        return element;
     }
 }

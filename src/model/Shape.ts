@@ -1,3 +1,5 @@
+import { SvgElement } from "./SvgElement";
+
 export abstract class Shape {
     private readonly id: string;
     private parentId: string | undefined;
@@ -69,4 +71,22 @@ export abstract class Shape {
     public abstract describe(): string;
 
     public abstract clone(): Shape;
+
+    public abstract toSvgElement(): SvgElement;
+
+    protected createSvgElement(
+        tag: string,
+        attributes: Readonly<Record<string, string | number | undefined>>,
+    ): SvgElement {
+        const element = new SvgElement(tag);
+        element.setAttribute("id", this.getId());
+
+        for (const [name, value] of Object.entries(attributes)) {
+            if (value !== undefined) {
+                element.setAttribute(name, value);
+            }
+        }
+
+        return element;
+    }
 }

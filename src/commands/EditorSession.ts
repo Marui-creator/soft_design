@@ -2,10 +2,12 @@ import { SvgDocument } from "../model/SvgDocument";
 
 export class EditorSession {
     private document: SvgDocument | undefined;
+    private filePath: string | undefined;
 
     public init(width = 800, height = 600): SvgDocument {
         const document = new SvgDocument(width, height);
         this.document = document;
+        this.filePath = undefined;
         return document;
     }
 
@@ -24,5 +26,13 @@ export class EditorSession {
     public restoreDocument(snapshot: SvgDocument): void {
         const restored = snapshot.clone();
         this.document = restored;
+    }
+
+    public getFilePath(): string | undefined {
+        return this.filePath;
+    }
+
+    public setFilePath(path: string): void {
+        this.filePath = path;
     }
 }

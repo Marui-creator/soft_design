@@ -1,5 +1,6 @@
 import { Shape } from "./Shape";
 import { Group } from "./Group";
+import { SvgElement } from "./SvgElement";
 
 export class SvgDocument {
     private width: number;
@@ -306,5 +307,23 @@ export class SvgDocument {
         for (const sibling of siblings) {
             this.shapes.set(sibling.getId(), sibling);
         }
+    }
+
+    public toSvgElement(): SvgElement {
+        const root = new SvgElement("svg");
+
+        root.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        root.setAttribute("width", this.width);
+        root.setAttribute("height", this.height);
+        root.setAttribute(
+            "viewBox",
+            `0 0 ${this.width} ${this.height}`,
+        );
+
+        for (const shape of this.shapes.values()) {
+            root.addChild(shape.toSvgElement());
+        }
+
+        return root;
     }
 }

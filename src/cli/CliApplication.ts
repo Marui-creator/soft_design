@@ -22,6 +22,8 @@ import { GroupCommand } from "../commands/GroupCommand";
 import { UngroupCommand } from "../commands/UngroupCommand";
 import { FrontCommand } from "../commands/FrontCommand";
 import { BackCommand } from "../commands/BackCommand";
+import { SaveCommand } from "../commands/SaveCommand";
+import { SvgFileWriter } from "../infrastructure/SvgFileWriter";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -54,6 +56,7 @@ export class CliApplication {
       ["ungroup", new HistoryEditCommand(new UngroupCommand(session), history)],
       ["front", new HistoryEditCommand(new FrontCommand(session), history)],
       ["back", new HistoryEditCommand(new BackCommand(session), history)],
+      ["save", new SaveCommand(session, new SvgFileWriter(), history)],
     ]);
   }
 
