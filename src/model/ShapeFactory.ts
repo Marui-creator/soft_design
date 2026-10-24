@@ -2,6 +2,7 @@ import { Shape } from "./Shape";
 import { Rect } from "./Rect";
 import { Circle } from "./Circle";
 import { Ellipse } from "./Ellipse";
+import { Line } from "./Line";
 
 export class ShapeFactory {
     public create(type: string, args: readonly string[]): Shape {
@@ -16,6 +17,11 @@ export class ShapeFactory {
         if (type === "ellipse") {
             return this.createEllipse(args);
         }
+
+        if (type === "line") {
+            return this.createLine(args);
+        }
+
         throw new Error(
             `unknown shape type: ${type} (is the plugin loaded?)`,
         );
@@ -74,6 +80,25 @@ export class ShapeFactory {
             Number(rx),
             Number(ry),
             fill,
+        );
+    }
+
+    private createLine(args: readonly string[]): Line {
+        if (args.length !== 5 && args.length !== 6) {
+            throw new Error(
+                "usage: create line <id> <x1> <y1> <x2> <y2> [stroke]",
+            );
+        }
+
+        const [id, x1, y1, x2, y2, stroke] = args;
+
+        return new Line(
+            id!,
+            Number(x1),
+            Number(y1),
+            Number(x2),
+            Number(y2),
+            stroke,
         );
     }
 }
