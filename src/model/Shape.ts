@@ -1,6 +1,7 @@
 export abstract class Shape {
   private readonly id: string;
   public abstract describe(): string;
+  public abstract clone(): Shape;
 
   protected constructor(id: string) {
     if (id.trim().length === 0) {
