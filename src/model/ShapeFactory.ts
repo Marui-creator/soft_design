@@ -3,6 +3,7 @@ import { Rect } from "./Rect";
 import { Circle } from "./Circle";
 import { Ellipse } from "./Ellipse";
 import { Line } from "./Line";
+import { Text } from "./Text";
 
 export class ShapeFactory {
     public create(type: string, args: readonly string[]): Shape {
@@ -20,6 +21,10 @@ export class ShapeFactory {
 
         if (type === "line") {
             return this.createLine(args);
+        }
+
+        if (type === "text") {
+            return this.createText(args);
         }
 
         throw new Error(
@@ -99,6 +104,23 @@ export class ShapeFactory {
             Number(x2),
             Number(y2),
             stroke,
+        );
+    }
+
+    private createText(args: readonly string[]): Text {
+        if (args.length !== 4) {
+            throw new Error(
+                'usage: create text <id> <x> <y> "content"',
+            );
+        }
+
+        const [id, x, y, content] = args;
+
+        return new Text(
+            id!,
+            Number(x),
+            Number(y),
+            content!,
         );
     }
 }
