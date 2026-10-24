@@ -7,6 +7,8 @@ import { CanvasCommand } from "../commands/CanvasCommand";
 import { CreateCommand } from "../commands/CreateCommand";
 import { ShapeFactory } from "../model/ShapeFactory";
 import { ShowCommand } from "../commands/ShowCommand";
+import { MoveCommand } from "../commands/MoveCommand";
+import { ScaleCommand } from "../commands/ScaleCommand";
 
 export class CliApplication {
   private readonly commands: ReadonlyMap<string, Command>;
@@ -19,6 +21,8 @@ export class CliApplication {
       ["canvas", new CanvasCommand(session)],
       ["create", new CreateCommand(session, new ShapeFactory())],
       ["show", new ShowCommand(session)],
+      ["move", new MoveCommand(session)],
+      ["scale", new ScaleCommand(session)],
     ]);
   }
 
