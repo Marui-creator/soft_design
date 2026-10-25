@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { SvgElement } from "./SvgElement";
 
 export class Line extends Shape {
     private x1: number;
@@ -164,5 +165,17 @@ export class Line extends Shape {
         if (![x1, y1, x2, y2].every(Number.isFinite)) {
             throw new Error("geometry values must be finite numbers");
         }
+    }
+
+    public toSvgElement(): SvgElement {
+        return this.createSvgElement("line", {
+            x1: this.x1,
+            y1: this.y1,
+            x2: this.x2,
+            y2: this.y2,
+            fill: this.fill,
+            stroke: this.stroke,
+            "stroke-width": this.strokeWidth,
+        });
     }
 }

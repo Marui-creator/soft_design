@@ -1,6 +1,9 @@
+import { SvgElement } from "./SvgElement";
+
 export abstract class Shape {
     private readonly id: string;
     private parentId: string | undefined;
+    private transform: string | undefined;
 
     protected constructor(id: string) {
         if (id.trim().length === 0) {
@@ -34,6 +37,7 @@ export abstract class Shape {
 
     protected copyBaseTo(copy: Shape): void {
         copy.parentId = this.parentId;
+        copy.transform = this.transform;
     }
 
     public containsId(id: string): boolean {
@@ -69,4 +73,71 @@ export abstract class Shape {
     public abstract describe(): string;
 
     public abstract clone(): Shape;
+
+    public abstract toSvgElement(): SvgElement;
+
+    protected createSvgElement(
+        tag: string,
+        attributes: Readonly<Record<string, string | number | undefined>>,
+    ): SvgElement {
+        const element = new SvgElement(tag);
+        element.setAttribute("id", this.getId());
+
+
+        if (this.transform !== undefined) {
+            element.setAttribute("transform", this.transform);
+        }
+
+        for (const [name, value] of Object.entries(attributes)) {
+            if (value !== undefined) {
+                element.setAttribute(name, value);
+            }
+        }
+
+        return element;
+    }
+
+    public inheritStylesFrom(source: Shape): void {
+        const sourceElement = source.toSvgElement();
+        const ownElement = this.toSvgElement();
+
+        for (const name of ["fill", "stroke", "stroke-width"]) {
+            const inherited = sourceElement.getAttribute(name);
+            const own = ownElement.getAttribute(name);
+
+            if (
+                inherited !== undefined &&
+                (own === undefined || own === "inherit")
+            ) {
+                this.setAttribute(name, inherited);
+            }
+        }
+    }
+
+    public getTransform(): string | undefined {
+        return this.transform;
+    }
+
+    public setTransform(value: string | undefined): void {
+        this.transform =
+            value === undefined || value.trim().length === 0
+                ? undefined
+                : value.trim();
+    }
+
+    public prependTransform(value: string | undefined): void {
+        if (value === undefined || value.trim().length === 0) {
+            return;
+        }
+
+        this.setTransform(
+            this.transform === undefined
+                ? value
+                : `${value} ${this.transform}`,
+        );
+    }
+
+    public getLabel(): string {
+        return `${this.toSvgElement().getTag()}#${this.getId()}`;
+    }
 }

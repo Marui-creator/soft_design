@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { SvgElement } from "./SvgElement";
 
 export class Rect extends Shape {
     private x: number;
@@ -183,5 +184,17 @@ export class Rect extends Shape {
         }
 
         return number;
+    }
+
+    public toSvgElement(): SvgElement {
+        return this.createSvgElement("rect", {
+            x: this.x,
+            y: this.y,
+            width: this.width,
+            height: this.height,
+            fill: this.fill,
+            stroke: this.stroke,
+            "stroke-width": this.strokeWidth,
+        });
     }
 }

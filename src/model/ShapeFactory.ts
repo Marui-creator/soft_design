@@ -5,6 +5,7 @@ import { Ellipse } from "./Ellipse";
 import { Line } from "./Line";
 import { Text } from "./Text";
 import { Group } from "./Group";
+import { SvgElement } from "./SvgElement";
 
 export class ShapeFactory {
     public create(type: string, args: readonly string[]): Shape {
@@ -131,5 +132,73 @@ export class ShapeFactory {
             Number(y),
             content!,
         );
+    }
+
+    public fromSvgElement(element: SvgElement): Shape {
+        const type = element.getTag();
+        const id = element.getAttribute("id");
+
+        if (id === undefined || id.trim().length === 0) {
+            throw new Error(`missing id on <${type}>`);
+        }
+
+        // SVG 中这些几何属性省略时采用零值。
+        const geometry = new Map<string, readonly string[]>([
+            ["rect", ["x", "y", "width", "height"]],
+            ["circle", ["cx", "cy", "r"]],
+            ["ellipse", ["cx", "cy", "rx", "ry"]],
+            ["line", ["x1", "y1", "x2", "y2"]],
+            ["text", ["x", "y"]],
+            ["g", []],
+        ]);
+
+        const names = geometry.get(type);
+
+        if (names === undefined) {
+            throw new Error(
+                `unknown shape type: ${type} (is the plugin loaded?)`,
+            );
+        }
+
+        const args = [
+            id,
+            ...names.map((name) => {
+                const value = element.getAttribute(name) ?? "0";
+
+                if (value.trim().length === 0) {
+                    throw new Error(`invalid SVG attribute: ${name}`);
+                }
+
+                return value;
+            }),
+        ];
+
+        if (type === "text") {
+            args.push(element.getText() ?? "");
+        }
+
+        const shape = this.create(type, args);
+
+        shape.setTransform(element.getAttribute("transform"));
+
+        for (const name of ["fill", "stroke", "stroke-width"]) {
+            const value = element.getAttribute(name);
+
+            if (value !== undefined) {
+                shape.setAttribute(name, value);
+            }
+        }
+
+        const children = element.getChildren();
+
+        if (!shape.isContainer() && children.length > 0) {
+            throw new Error(`unsupported child elements in <${type}>`);
+        }
+
+        for (const child of children) {
+            shape.addChild(this.fromSvgElement(child));
+        }
+
+        return shape;
     }
 }

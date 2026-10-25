@@ -54,7 +54,17 @@ export class TreeCommand implements Command {
     private formatLabel(shape: Shape): string {
         const [heading, ...details] = shape.describe().split("\n");
         const name = heading!.split("  parent=")[0]!;
+        const parts = [
+            name,
+            ...details.map((line) => line.trim()),
+        ];
 
-        return [name, ...details.map((line) => line.trim())].join(" ");
+        const transform = shape.getTransform();
+
+        if (transform !== undefined) {
+            parts.push(`transform=${JSON.stringify(transform)}`);
+        }
+
+        return parts.join(" ");
     }
 }

@@ -15,6 +15,7 @@ export class AddToCommand implements Command {
 
         document.addTo(containerId!, id!);
 
-        return `shape#${id} moved into g#${containerId}`;
+        const shape = document.getShape(id!);
+        return `${shape.getLabel()} moved into g#${containerId}`;
     }
 }

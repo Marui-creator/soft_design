@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { SvgElement } from "./SvgElement";
 
 export class Ellipse extends Shape {
     private cx: number;
@@ -168,5 +169,17 @@ export class Ellipse extends Shape {
         if (rx < 0 || ry < 0) {
             throw new Error("ellipse radii must not be negative");
         }
+    }
+
+    public toSvgElement(): SvgElement {
+        return this.createSvgElement("ellipse", {
+            cx: this.cx,
+            cy: this.cy,
+            rx: this.rx,
+            ry: this.ry,
+            fill: this.fill,
+            stroke: this.stroke,
+            "stroke-width": this.strokeWidth,
+        });
     }
 }

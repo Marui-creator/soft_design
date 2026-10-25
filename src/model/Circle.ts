@@ -1,4 +1,5 @@
 import { Shape } from "./Shape";
+import { SvgElement } from "./SvgElement";
 
 export class Circle extends Shape {
     private cx: number;
@@ -148,5 +149,16 @@ export class Circle extends Shape {
         if (r < 0) {
             throw new Error("circle radius must not be negative");
         }
+    }
+
+    public toSvgElement(): SvgElement {
+        return this.createSvgElement("circle", {
+            cx: this.cx,
+            cy: this.cy,
+            r: this.r,
+            fill: this.fill,
+            stroke: this.stroke,
+            "stroke-width": this.strokeWidth,
+        });
     }
 }
