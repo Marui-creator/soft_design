@@ -13,6 +13,7 @@ export class FrontCommand implements Command {
 
         document.bringToFront(args[0]!);
 
-        return `shape#${args[0]} brought to front`;
+        const shape = document.getShape(args[0]!);
+        return `${shape.getLabel()} brought to front`;
     }
 }

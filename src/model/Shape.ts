@@ -136,4 +136,8 @@ export abstract class Shape {
                 : `${value} ${this.transform}`,
         );
     }
+
+    public getLabel(): string {
+        return `${this.toSvgElement().getTag()}#${this.getId()}`;
+    }
 }

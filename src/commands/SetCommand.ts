@@ -16,6 +16,6 @@ export class SetCommand implements Command {
 
         shape.setAttribute(name!, value!);
 
-        return `shape#${shape.getId()} updated: ${name}=${value}`;
+        return `${shape.getLabel()} updated: ${name}=${value}`;
     }
 }

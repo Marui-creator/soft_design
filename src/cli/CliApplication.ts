@@ -83,7 +83,8 @@ export class CliApplication {
   undo
   redo
 
-当前仅实现 help，其余命令将在后续阶段加入。
+支持的图形：rect、circle、ellipse、line、text、g。
+带空格的参数请使用双引号包裹。
 按 Ctrl+C 退出。`);
   }
 }

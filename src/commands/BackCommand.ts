@@ -13,6 +13,7 @@ export class BackCommand implements Command {
 
         document.sendToBack(args[0]!);
 
-        return `shape#${args[0]} sent to back`;
+        const shape = document.getShape(args[0]!);
+        return `${shape.getLabel()} sent to back`;
     }
 }
