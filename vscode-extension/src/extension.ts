@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { SvgDocumentSymbolProvider } from "./SvgDocumentSymbolProvider";
 
 /** 只提供界面装饰，不修改文件名或内容。 */
 export class SvgFileDecorationProvider implements vscode.FileDecorationProvider {
@@ -30,5 +31,10 @@ export class SvgFileDecorationProvider implements vscode.FileDecorationProvider 
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.window.registerFileDecorationProvider(new SvgFileDecorationProvider()),
+    vscode.languages.registerDocumentSymbolProvider(
+      { pattern: "**/*.[sS][vV][gG]" },
+      new SvgDocumentSymbolProvider(),
+      { label: "SVG Phase 2 Outline" },
+    ),
   );
 }

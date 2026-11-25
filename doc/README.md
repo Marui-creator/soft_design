@@ -1,5 +1,44 @@
 # SVG 命令行编辑器实验
 
+## Phase 2：VSCode 扩展进度
+
+扩展源码位于 `vscode-extension/`，安装、F5 调试与 Outline 手动验收步骤见
+该目录的 README。文件标记已在开发宿主中验证：SVG 文件显示 `[]`，普通文件
+与 `.svg` 后缀目录不显示；原文件名和内容不变。
+
+![SVG 文件标记运行截图](images/vscode-svg-badge.png)
+
+Outline 已实现并通过 4 项自动测试。2026-11-25 在开发宿主中手动验证了层级、
+点击定位第 3 行、ID 编辑后的更新，以及删除闭合标签后清空、恢复标签后重建大纲。
+示例已恢复为原始内容。截图证明编辑更新；未保存缓冲区读取另由自动测试验证。
+提供者向原生 Outline 返回层级 DocumentSymbol；
+VSCode 负责请求、界面绘制与跳转，插件负责解析当前文本及提供范围。
+
+![大纲层级与点击定位](images/vscode-svg-outline.png)
+
+![编辑 ID 后大纲更新](images/vscode-svg-outline-update.png)
+
+![不完整 XML 时大纲清空](images/vscode-svg-outline-invalid.png)
+
+![恢复 XML 后大纲重建](images/vscode-svg-outline-recovered.png)
+
+文件装饰 API 的名称不等于经典 Decorator 模式：这里实现提供者接口并注册，
+由宿主回调，没有包装另一个同接口对象并转发调用。经典 Decorator 通常通过
+对象组合给被包装对象增加职责。符号提供者则承担适配器职责：将解析器的
+元素树和字符偏移适配为 VSCode 的 DocumentSymbol、Range 与 children。
+
+复用评估：Phase 1 的模型和树遍历思路可参考，但不能直接将 CLI 模型作为大纲数据源。
+CLI 读入具有 ID 补全、类型限制及领域转换，大纲必须接受无 ID 与任意 XML 元素，
+并保留当前未保存文本的精确位置。现有模型不保存这些源码范围，因此扩展采用独立的
+只读 XML 解析层，不依赖 CLI 内部实现。后续如抽取共享模块，应只共享纯解析能力。
+
+AI 协作检查与修正：初始 TypeScript 配置使用旧的 Node 解析选项，依据编辑器提示
+改为 Node16 配对配置；检查 `.svg` 后缀目录不能误标；大纲采用 XML 解析器处理
+注释、CDATA、实体与引号中的 `>`，避免仅凭正则匹配标签；自动测试同时核验
+未保存编辑、源码选择范围，以及错误 XML 后恢复，不将测试替身结果当作真实界面截图。
+手动验证还发现 SVG 默认图像预览可能干扰源码跳转，因此示例工作区将
+`*.svg` 的默认编辑器关联设为 `default`（文本编辑器），关闭重复预览标签后定位正常。
+
 使用 TypeScript 和面向对象方式开发命令行 SVG 编辑器，
 通过 AI 协作分阶段完成设计、实现与验证。
 
