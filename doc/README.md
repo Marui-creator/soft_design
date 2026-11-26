@@ -1,8 +1,9 @@
 # SVG 命令行编辑器实验
 
 Phase 2 CLI 四个扩展点、调用位置清单、装配边界、架构 PlantUML 与 ADR 见
-[插件框架设计](plugin-framework.md)。本步仅完成框架和内置能力迁移；必交的可选插件
-尚待后续提交。配置加载器与目录访问适配器已在框架后接入，说明见
+[插件框架设计](plugin-framework.md)。框架和内置能力迁移已完成，stats、dir 命令插件
+已接入，运行及验证见 [命令插件](command-plugins.md)。box 与树标签仍待实现。
+配置加载器与目录访问适配器已在框架后接入，说明见
 [插件加载与目录访问](plugin-loading.md)。
 
 ## Phase 2：VSCode 扩展进度

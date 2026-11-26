@@ -30,4 +30,9 @@ expected/各会话目录保存 final 序列化的 SVG 文件。
 这是回归基线，不能单凭这三个会话认定 Phase 1 所有边界情况均已覆盖。
 
 脚本对当前版本显式传入 `--no-plugins`，关闭所有新增插件，尤其树标签；对历史
-final 保留原启动参数。box 会话和 stats/dir 会话在插件阶段单独补充。
+final 保留原启动参数。
+
+stats/dir 会话为 cli-plugins.txt，双装配预期位于 expected/assembly/。
+执行 `npm run test:assembly`，对基础会话、分组流程图和新增命令分别验证 A/B
+stdout 与保存 SVG 相同；临时目录与具体重置规则见命令插件文档。
+box 会话在后续图形插件阶段补充。

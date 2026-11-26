@@ -1,0 +1,19 @@
+# No SVG is initialized yet: dir must still work.
+dir
+init 800 600
+stats
+create g flow
+create rect r1 10 20 100 60 red in flow
+create g nested in flow
+create text t1 20 50 "开始" in nested
+create circle c1 200 100 20 blue
+stats
+dir
+move r1 5 10
+stats
+undo
+tree
+redo
+stats
+dir
+help

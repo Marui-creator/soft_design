@@ -1,0 +1,6 @@
+{
+  "plugins": [
+    { "module": "./src/plugins/stats", "enabled": false },
+    { "module": "./src/plugins/dir", "enabled": false }
+  ]
+}

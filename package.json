@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "test:compat": "node scripts/verify-phase1.cjs",
     "test": "npm run build && node --test test/*.test.cjs",
-    "metrics": "node scripts/metrics.cjs"
+    "metrics": "node scripts/metrics.cjs",
+    "test:assembly": "npm run build && node scripts/verify-assembly.cjs"
   },
   "repository": {
     "type": "git",
