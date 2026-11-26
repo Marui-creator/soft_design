@@ -48,6 +48,11 @@ export abstract class Shape {
         return false;
     }
 
+    /** 复合图形可覆盖此策略，普通命令无需知道具体类型。 */
+    public canUngroup(): boolean {
+        return this.isContainer();
+    }
+
     public getChildren(): readonly Shape[] {
         return [];
     }

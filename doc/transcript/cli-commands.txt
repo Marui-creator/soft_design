@@ -1,0 +1,39 @@
+# Additional coverage for all built-in commands and representative errors.
+help
+tree
+init 400 300
+canvas
+canvas 640 480
+create rect r1 10 20 30 40 red
+create circle c1 80 90 12 blue
+create ellipse e1 100 120 20 10 green
+create line l1 0 0 50 50 black
+create text t1 30 60 "hello world"
+create g g1
+addto g1 r1
+addto g1 t1
+tree
+tree g1
+show r1
+move g1 5 10
+scale c1 2
+set r1 fill yellow
+set t1 text "updated text"
+front e1
+back e1
+group g2 c1 e1
+ungroup g2
+undo
+redo
+delete l1
+undo
+redo
+create rect r1 0 0 1 1
+set r1 label unsupported
+move missing 1 1
+unknown-command
+tree
+save commands.svg
+redo
+read commands.svg
+tree

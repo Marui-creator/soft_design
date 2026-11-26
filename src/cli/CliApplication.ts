@@ -1,90 +1,30 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
-import { Command } from "../commands/Command";
+import type { ExtensionReader } from "../core/extensions";
 import { CommandParser } from "./CommandParser";
+
 export class CliApplication {
-  private readonly commands: ReadonlyMap<string, Command>;
-  private readonly parser = new CommandParser();
-
-  public constructor(commands: ReadonlyMap<string, Command>) {
-    this.commands = commands;
-  }
-
-  public run(): void {
-    const terminal = createInterface({
-      input: stdin,
-      output: stdout,
-      prompt: "svg> ",
-    });
-
-    console.log("svg-editor 0.1 — type 'help' for commands");
-    terminal.prompt();
-
-    terminal.on("line", (line: string) => {
-      const input = line.trim();
-
-      if (input.length === 0 || input.startsWith("#")) {
+    private readonly parser = new CommandParser();
+    public constructor(private readonly extensions: ExtensionReader) { }
+    public run(): void {
+        const terminal = createInterface({ input: stdin, output: stdout, prompt: "svg> " });
+        console.log("svg-editor 0.1 — type 'help' for commands");
         terminal.prompt();
-        return;
-      }
-
-      try {
-        const [name, ...args] = this.parser.parse(input);
-
-        if (name === "help") {
-          if (args.length !== 0) {
-            throw new Error("usage: help");
-          }
-
-          this.printHelp();
-        } else {
-          const command = this.commands.get(name!);
-
-          if (command === undefined) {
-            throw new Error(`unknown command: ${name}`);
-          }
-
-          console.log(command.execute(args));
-        }
-      } catch (error: unknown) {
-        const message = error instanceof Error ? error.message : "unexpected error";
-        console.log(`error: ${message}`);
-      }
-
-      terminal.prompt();
-    });
-  }
-
-  private printHelp(): void {
-    console.log(`文档：
-  init [w] [h]
-  read <file.svg>
-  save [file.svg]
-  canvas [w] [h]
-
-图形编辑：
-  create <type> <id> [params…] [in <containerId>]
-  delete <id>
-  move <id> <dx> <dy>
-  scale <id> <factor>
-  set <id> <attr> <value>
-  group <newGid> <id1> <id2>…
-  ungroup <gid>
-  addto <gid> <id>
-  front <id>
-  back <id>
-
-显示：
-  tree [id]
-  show <id>
-  help
-
-撤销重做：
-  undo
-  redo
-
-支持的图形：rect、circle、ellipse、line、text、g。
-带空格的参数请使用双引号包裹。
-按 Ctrl+C 退出。`);
-  }
+        terminal.on("line", (line: string) => {
+            const input = line.trim();
+            if (input.length === 0 || input.startsWith("#")) {
+                terminal.prompt();
+                return;
+            }
+            try {
+                const [name, ...args] = this.parser.parse(input);
+                const command = this.extensions.getCommands().find((item) => item.name === name);
+                if (!command) throw new Error(`unknown command: ${name}`);
+                console.log(command.execute(args));
+            } catch (error: unknown) {
+                console.log(`error: ${error instanceof Error ? error.message : "unexpected error"}`);
+            }
+            terminal.prompt();
+        });
+    }
 }

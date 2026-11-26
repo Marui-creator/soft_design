@@ -1,0 +1,4063 @@
+{
+  "before": {
+    "commit": "2a816c205b6518c1286cae56fe513135c1dbb64f",
+    "totals": {
+      "kernel": {
+        "files": 40,
+        "lines": 2798,
+        "complexity": 537
+      },
+      "assembly": {
+        "files": 1,
+        "lines": 70,
+        "complexity": 1
+      },
+      "plugins": {
+        "files": 0,
+        "lines": 0,
+        "complexity": 0
+      }
+    },
+    "cli": [
+      {
+        "file": "src/cli/CliApplication.ts",
+        "category": "kernel",
+        "responsibility": "CLI input and command dispatch",
+        "lines": 90,
+        "complexity": 12,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 23,
+            "complexity": 8
+          },
+          {
+            "name": "run",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "printHelp",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/cli/CommandParser.ts",
+        "category": "kernel",
+        "responsibility": "CLI input and command dispatch",
+        "lines": 39,
+        "complexity": 9,
+        "routines": [
+          {
+            "name": "parse",
+            "line": 2,
+            "complexity": 8
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/AddToCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 21,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/BackCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 19,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/CanvasCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 27,
+        "complexity": 5,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/Command.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 3,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/CommandHistory.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 83,
+        "complexity": 11,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "executeEdit",
+            "line": 12,
+            "complexity": 2
+          },
+          {
+            "name": "undo",
+            "line": 34,
+            "complexity": 2
+          },
+          {
+            "name": "redo",
+            "line": 52,
+            "complexity": 2
+          },
+          {
+            "name": "blockAfterIo",
+            "line": 70,
+            "complexity": 1
+          },
+          {
+            "name": "checkAllowed",
+            "line": 76,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/CreateCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 42,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 5
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DeleteCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 18,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DocumentReadResult.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 20,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "getDocument",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "getWarnings",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DocumentReader.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 5,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DocumentWriter.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 5,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/EditorSession.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 46,
+        "complexity": 9,
+        "routines": [
+          {
+            "name": "init",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "getDocument",
+            "line": 14,
+            "complexity": 2
+          },
+          {
+            "name": "captureDocument",
+            "line": 22,
+            "complexity": 1
+          },
+          {
+            "name": "restoreDocument",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "getFilePath",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "setFilePath",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "openDocument",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/FrontCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 19,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/GroupCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 22,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/HistoryEditCommand.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 13,
+        "complexity": 3,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/InitCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 24,
+        "complexity": 6,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/MoveCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 27,
+        "complexity": 6,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/ReadCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 30,
+        "complexity": 5,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 13,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/RedoCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 14,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/SaveCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 34,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 13,
+            "complexity": 5
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/ScaleCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 26,
+        "complexity": 6,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/SetCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 21,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/ShowCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 24,
+        "complexity": 5,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/TreeCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 70,
+        "complexity": 12,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 38,
+            "complexity": 3
+          },
+          {
+            "name": "appendChildren",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 59,
+            "complexity": 1
+          },
+          {
+            "name": "formatLabel",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/UndoCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 14,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/UngroupCommand.ts",
+        "category": "kernel",
+        "responsibility": "Legacy built-in command (before extraction)",
+        "lines": 18,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/SvgFileReader.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 20,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/SvgFileWriter.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 18,
+        "complexity": 3,
+        "routines": [
+          {
+            "name": "write",
+            "line": 6,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/SvgXmlParser.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 190,
+        "complexity": 44,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 10,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "parseXml",
+            "line": 44,
+            "complexity": 3
+          },
+          {
+            "name": "convertElement",
+            "line": 65,
+            "complexity": 12
+          },
+          {
+            "name": "collectIds",
+            "line": 102,
+            "complexity": 5
+          },
+          {
+            "name": "assignIds",
+            "line": 121,
+            "complexity": 6
+          },
+          {
+            "name": "readDimension",
+            "line": 151,
+            "complexity": 3
+          },
+          {
+            "name": "checkViewBox",
+            "line": 167,
+            "complexity": 7
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/main.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 70,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Circle.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 164,
+        "complexity": 27,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 38,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 58,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 67,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 72,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 77,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 93,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 114,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 130,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 140,
+            "complexity": 3
+          },
+          {
+            "name": "toSvgElement",
+            "line": 154,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Ellipse.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 185,
+        "complexity": 30,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 40,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 71,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 53,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 97,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 118,
+            "complexity": 1
+          },
+          {
+            "name": "updateGeometry",
+            "line": 135,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 149,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 159,
+            "complexity": 4
+          },
+          {
+            "name": "toSvgElement",
+            "line": 174,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Group.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 176,
+        "complexity": 42,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 16,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "removeChild",
+            "line": 35,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "containsId",
+            "line": 51,
+            "complexity": 2
+          },
+          {
+            "name": "move",
+            "line": 58,
+            "complexity": 5
+          },
+          {
+            "name": "scale",
+            "line": 73,
+            "complexity": 5
+          },
+          {
+            "name": "setAttribute",
+            "line": 87,
+            "complexity": 6
+          },
+          {
+            "name": "describe",
+            "line": 114,
+            "complexity": 2
+          },
+          {
+            "name": "clone",
+            "line": 127,
+            "complexity": 3
+          },
+          {
+            "name": "isContainer",
+            "line": 143,
+            "complexity": 1
+          },
+          {
+            "name": "insertChild",
+            "line": 147,
+            "complexity": 4
+          },
+          {
+            "name": "toSvgElement",
+            "line": 164,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Line.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 181,
+        "complexity": 28,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 40,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 71,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 53,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 97,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 118,
+            "complexity": 1
+          },
+          {
+            "name": "updateGeometry",
+            "line": 135,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 149,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 159,
+            "complexity": 2
+          },
+          {
+            "name": "toSvgElement",
+            "line": 170,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Rect.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 200,
+        "complexity": 34,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "describe",
+            "line": 31,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "getX",
+            "line": 68,
+            "complexity": 1
+          },
+          {
+            "name": "getY",
+            "line": 72,
+            "complexity": 1
+          },
+          {
+            "name": "getWidth",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "getHeight",
+            "line": 80,
+            "complexity": 1
+          },
+          {
+            "name": "getFill",
+            "line": 84,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 98,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 116,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 133,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 134,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 135,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 144,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 149,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 154,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 159,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 131,
+            "complexity": 2
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 175,
+            "complexity": 3
+          },
+          {
+            "name": "toSvgElement",
+            "line": 189,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Shape.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 143,
+        "complexity": 34,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 2
+          },
+          {
+            "name": "getId",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "getParentId",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "setParentId",
+            "line": 24,
+            "complexity": 2
+          },
+          {
+            "name": "getParentDescription",
+            "line": 32,
+            "complexity": 2
+          },
+          {
+            "name": "copyBaseTo",
+            "line": 38,
+            "complexity": 1
+          },
+          {
+            "name": "containsId",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "isContainer",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "removeChild",
+            "line": 59,
+            "complexity": 1
+          },
+          {
+            "name": "insertChild",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "createSvgElement",
+            "line": 79,
+            "complexity": 4
+          },
+          {
+            "name": "inheritStylesFrom",
+            "line": 100,
+            "complexity": 5
+          },
+          {
+            "name": "getTransform",
+            "line": 117,
+            "complexity": 1
+          },
+          {
+            "name": "setTransform",
+            "line": 121,
+            "complexity": 3
+          },
+          {
+            "name": "prependTransform",
+            "line": 128,
+            "complexity": 4
+          },
+          {
+            "name": "getLabel",
+            "line": 140,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/ShapeFactory.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 204,
+        "complexity": 37,
+        "routines": [
+          {
+            "name": "create",
+            "line": 11,
+            "complexity": 8
+          },
+          {
+            "name": "createRect",
+            "line": 45,
+            "complexity": 3
+          },
+          {
+            "name": "createCircle",
+            "line": 64,
+            "complexity": 3
+          },
+          {
+            "name": "createEllipse",
+            "line": 82,
+            "complexity": 3
+          },
+          {
+            "name": "createLine",
+            "line": 101,
+            "complexity": 3
+          },
+          {
+            "name": "createText",
+            "line": 120,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 165,
+            "complexity": 3
+          },
+          {
+            "name": "fromSvgElement",
+            "line": 137,
+            "complexity": 11
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/SvgDocument.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 334,
+        "complexity": 65,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "getWidth",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "getHeight",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "resize",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "addShape",
+            "line": 34,
+            "complexity": 3
+          },
+          {
+            "name": "getShape",
+            "line": 52,
+            "complexity": 2
+          },
+          {
+            "name": "getContainer",
+            "line": 62,
+            "complexity": 3
+          },
+          {
+            "name": "getShapes",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "removeShape",
+            "line": 80,
+            "complexity": 2
+          },
+          {
+            "name": "clone",
+            "line": 92,
+            "complexity": 2
+          },
+          {
+            "name": "findShape",
+            "line": 102,
+            "complexity": 3
+          },
+          {
+            "name": "findInSubtree",
+            "line": 114,
+            "complexity": 4
+          },
+          {
+            "name": "validateIncoming",
+            "line": 133,
+            "complexity": 4
+          },
+          {
+            "name": "validateSize",
+            "line": 150,
+            "complexity": 5
+          },
+          {
+            "name": "addTo",
+            "line": 161,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 194,
+            "complexity": 1
+          },
+          {
+            "name": "groupShapes",
+            "line": 176,
+            "complexity": 9
+          },
+          {
+            "name": "collectSelected",
+            "line": 227,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 255,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 271,
+            "complexity": 1
+          },
+          {
+            "name": "ungroup",
+            "line": 245,
+            "complexity": 4
+          },
+          {
+            "name": "bringToFront",
+            "line": 277,
+            "complexity": 1
+          },
+          {
+            "name": "sendToBack",
+            "line": 281,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 301,
+            "complexity": 1
+          },
+          {
+            "name": "reorderShape",
+            "line": 285,
+            "complexity": 5
+          },
+          {
+            "name": "toSvgElement",
+            "line": 317,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/SvgElement.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 66,
+        "complexity": 16,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "setText",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "toXml",
+            "line": 23,
+            "complexity": 4
+          },
+          {
+            "name": "escape",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "getTag",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "getAttribute",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "getText",
+            "line": 59,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Text.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 143,
+        "complexity": 27,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 30,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 41,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 52,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 38,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 69,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "updatePosition",
+            "line": 107,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 114,
+            "complexity": 3
+          },
+          {
+            "name": "validatePosition",
+            "line": 124,
+            "complexity": 2
+          },
+          {
+            "name": "toSvgElement",
+            "line": 130,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      }
+    ],
+    "vscode": []
+  },
+  "after": {
+    "commit": "9d5721ba73fc3c9d67c97646d02d92627cbe8aaf",
+    "totals": {
+      "kernel": {
+        "files": 20,
+        "lines": 1378,
+        "complexity": 316
+      },
+      "assembly": {
+        "files": 3,
+        "lines": 113,
+        "complexity": 22
+      },
+      "plugins": {
+        "files": 26,
+        "lines": 1499,
+        "complexity": 288
+      }
+    },
+    "cli": [
+      {
+        "file": "src/cli/CliApplication.ts",
+        "category": "kernel",
+        "responsibility": "CLI input and command dispatch",
+        "lines": 30,
+        "complexity": 10,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 6
+          },
+          {
+            "name": "run",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/cli/CommandParser.ts",
+        "category": "kernel",
+        "responsibility": "CLI input and command dispatch",
+        "lines": 39,
+        "complexity": 9,
+        "routines": [
+          {
+            "name": "parse",
+            "line": 2,
+            "complexity": 8
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/Command.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 3,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/CommandHistory.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 83,
+        "complexity": 11,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "executeEdit",
+            "line": 12,
+            "complexity": 2
+          },
+          {
+            "name": "undo",
+            "line": 34,
+            "complexity": 2
+          },
+          {
+            "name": "redo",
+            "line": 52,
+            "complexity": 2
+          },
+          {
+            "name": "blockAfterIo",
+            "line": 70,
+            "complexity": 1
+          },
+          {
+            "name": "checkAllowed",
+            "line": 76,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DocumentReadResult.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 20,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "getDocument",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "getWarnings",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DocumentReader.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 5,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/DocumentWriter.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 5,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/EditorSession.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 54,
+        "complexity": 10,
+        "routines": [
+          {
+            "name": "init",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "getDocument",
+            "line": 16,
+            "complexity": 2
+          },
+          {
+            "name": "captureDocument",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "restoreDocument",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "getFilePath",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "setFilePath",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "getSavedDocument",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "openDocument",
+            "line": 46,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/commands/HistoryEditCommand.ts",
+        "category": "kernel",
+        "responsibility": "Editor state, history and command/IO contracts",
+        "lines": 13,
+        "complexity": 3,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/core/ExtensionRegistry.ts",
+        "category": "kernel",
+        "responsibility": "Extension contracts, public API and registry",
+        "lines": 60,
+        "complexity": 35,
+        "routines": [
+          {
+            "name": "registerShape",
+            "line": 10,
+            "complexity": 7
+          },
+          {
+            "name": "registerCommand",
+            "line": 18,
+            "complexity": 7
+          },
+          {
+            "name": "registerDecorator",
+            "line": 26,
+            "complexity": 2
+          },
+          {
+            "name": "registerAttribute",
+            "line": 30,
+            "complexity": 3
+          },
+          {
+            "name": "add",
+            "line": 36,
+            "complexity": 4
+          },
+          {
+            "name": "getShapes",
+            "line": 41,
+            "complexity": 1
+          },
+          {
+            "name": "getCommands",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "getDecorators",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "getAttributes",
+            "line": 44,
+            "complexity": 1
+          },
+          {
+            "name": "names",
+            "line": 45,
+            "complexity": 1
+          },
+          {
+            "name": "fork",
+            "line": 49,
+            "complexity": 1
+          },
+          {
+            "name": "commit",
+            "line": 54,
+            "complexity": 5
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/core/extensions.ts",
+        "category": "kernel",
+        "responsibility": "Extension contracts, public API and registry",
+        "lines": 73,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/core/index.ts",
+        "category": "kernel",
+        "responsibility": "Extension contracts, public API and registry",
+        "lines": 13,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 2,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/host/activatePlugin.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 44,
+        "complexity": 18,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "activatePlugin",
+            "line": 5,
+            "complexity": 8
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/host/createApplication.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 66,
+        "complexity": 3,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "createApplication",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/SvgFileReader.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 20,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/SvgFileWriter.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 18,
+        "complexity": 3,
+        "routines": [
+          {
+            "name": "write",
+            "line": 6,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/SvgXmlParser.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 190,
+        "complexity": 44,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 10,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "parseXml",
+            "line": 44,
+            "complexity": 3
+          },
+          {
+            "name": "convertElement",
+            "line": 65,
+            "complexity": 12
+          },
+          {
+            "name": "collectIds",
+            "line": 102,
+            "complexity": 5
+          },
+          {
+            "name": "assignIds",
+            "line": 121,
+            "complexity": 6
+          },
+          {
+            "name": "readDimension",
+            "line": 151,
+            "complexity": 3
+          },
+          {
+            "name": "checkViewBox",
+            "line": 167,
+            "complexity": 7
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/main.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 3,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Group.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 176,
+        "complexity": 42,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 16,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "removeChild",
+            "line": 35,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "containsId",
+            "line": 51,
+            "complexity": 2
+          },
+          {
+            "name": "move",
+            "line": 58,
+            "complexity": 5
+          },
+          {
+            "name": "scale",
+            "line": 73,
+            "complexity": 5
+          },
+          {
+            "name": "setAttribute",
+            "line": 87,
+            "complexity": 6
+          },
+          {
+            "name": "describe",
+            "line": 114,
+            "complexity": 2
+          },
+          {
+            "name": "clone",
+            "line": 127,
+            "complexity": 3
+          },
+          {
+            "name": "isContainer",
+            "line": 143,
+            "complexity": 1
+          },
+          {
+            "name": "insertChild",
+            "line": 147,
+            "complexity": 4
+          },
+          {
+            "name": "toSvgElement",
+            "line": 164,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/Shape.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 148,
+        "complexity": 35,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 2
+          },
+          {
+            "name": "getId",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "getParentId",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "setParentId",
+            "line": 24,
+            "complexity": 2
+          },
+          {
+            "name": "getParentDescription",
+            "line": 32,
+            "complexity": 2
+          },
+          {
+            "name": "copyBaseTo",
+            "line": 38,
+            "complexity": 1
+          },
+          {
+            "name": "containsId",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "isContainer",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "canUngroup",
+            "line": 52,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 60,
+            "complexity": 1
+          },
+          {
+            "name": "removeChild",
+            "line": 64,
+            "complexity": 1
+          },
+          {
+            "name": "insertChild",
+            "line": 68,
+            "complexity": 1
+          },
+          {
+            "name": "createSvgElement",
+            "line": 84,
+            "complexity": 4
+          },
+          {
+            "name": "inheritStylesFrom",
+            "line": 105,
+            "complexity": 5
+          },
+          {
+            "name": "getTransform",
+            "line": 122,
+            "complexity": 1
+          },
+          {
+            "name": "setTransform",
+            "line": 126,
+            "complexity": 3
+          },
+          {
+            "name": "prependTransform",
+            "line": 133,
+            "complexity": 4
+          },
+          {
+            "name": "getLabel",
+            "line": 145,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/ShapeFactory.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 27,
+        "complexity": 19,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "fromSvgElement",
+            "line": 12,
+            "complexity": 5
+          },
+          {
+            "name": "validate",
+            "line": 23,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/SvgDocument.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 335,
+        "complexity": 66,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "getWidth",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "getHeight",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "resize",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "addShape",
+            "line": 34,
+            "complexity": 3
+          },
+          {
+            "name": "getShape",
+            "line": 52,
+            "complexity": 2
+          },
+          {
+            "name": "getContainer",
+            "line": 62,
+            "complexity": 3
+          },
+          {
+            "name": "getShapes",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "removeShape",
+            "line": 80,
+            "complexity": 2
+          },
+          {
+            "name": "clone",
+            "line": 92,
+            "complexity": 2
+          },
+          {
+            "name": "findShape",
+            "line": 102,
+            "complexity": 3
+          },
+          {
+            "name": "findInSubtree",
+            "line": 114,
+            "complexity": 4
+          },
+          {
+            "name": "validateIncoming",
+            "line": 133,
+            "complexity": 4
+          },
+          {
+            "name": "validateSize",
+            "line": 150,
+            "complexity": 5
+          },
+          {
+            "name": "addTo",
+            "line": 161,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 194,
+            "complexity": 1
+          },
+          {
+            "name": "groupShapes",
+            "line": 176,
+            "complexity": 9
+          },
+          {
+            "name": "collectSelected",
+            "line": 227,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 256,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 272,
+            "complexity": 1
+          },
+          {
+            "name": "ungroup",
+            "line": 245,
+            "complexity": 5
+          },
+          {
+            "name": "bringToFront",
+            "line": 278,
+            "complexity": 1
+          },
+          {
+            "name": "sendToBack",
+            "line": 282,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 302,
+            "complexity": 1
+          },
+          {
+            "name": "reorderShape",
+            "line": 286,
+            "complexity": 5
+          },
+          {
+            "name": "toSvgElement",
+            "line": 318,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/model/SvgElement.ts",
+        "category": "kernel",
+        "responsibility": "Domain objects and shape dispatch",
+        "lines": 66,
+        "complexity": 16,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "setText",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "toXml",
+            "line": 23,
+            "complexity": 4
+          },
+          {
+            "name": "escape",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "getTag",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "getAttribute",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "getText",
+            "line": 59,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/HelpCommand.ts",
+        "category": "plugins",
+        "responsibility": "Command registration and help",
+        "lines": 19,
+        "complexity": 8,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/AddToCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 21,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/BackCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 19,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/CanvasCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 27,
+        "complexity": 5,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/CreateCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 42,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 5
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/DeleteCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 18,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/FrontCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 19,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/GroupCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 22,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/InitCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 24,
+        "complexity": 6,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/MoveCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 27,
+        "complexity": 6,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/ReadCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 30,
+        "complexity": 5,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 13,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/RedoCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 14,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/SaveCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 34,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 13,
+            "complexity": 5
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/ScaleCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 26,
+        "complexity": 6,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/SetCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 26,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 4
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/ShowCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 24,
+        "complexity": 5,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 3
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/TreeCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 81,
+        "complexity": 18,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 9,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 39,
+            "complexity": 3
+          },
+          {
+            "name": "appendChildren",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 60,
+            "complexity": 1
+          },
+          {
+            "name": "formatLabel",
+            "line": 55,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 74,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 78,
+            "complexity": 1
+          },
+          {
+            "name": "withTags",
+            "line": 72,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/UndoCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 14,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/commands/UngroupCommand.ts",
+        "category": "plugins",
+        "responsibility": "Built-in command behavior",
+        "lines": 18,
+        "complexity": 4,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 7,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-commands/index.ts",
+        "category": "plugins",
+        "responsibility": "Command registration and help",
+        "lines": 24,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 21,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-shapes/index.ts",
+        "category": "plugins",
+        "responsibility": "Shape provider creation and readback",
+        "lines": 97,
+        "complexity": 23,
+        "routines": [
+          {
+            "name": "canRead",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 3
+          },
+          {
+            "name": "read",
+            "line": 17,
+            "complexity": 8
+          },
+          {
+            "name": "check",
+            "line": 35,
+            "complexity": 2
+          },
+          {
+            "name": "create",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 59,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 67,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 75,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 83,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 91,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-shapes/shapes/Circle.ts",
+        "category": "plugins",
+        "responsibility": "Built-in shape behavior",
+        "lines": 164,
+        "complexity": 27,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 38,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 58,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 67,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 72,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 77,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 93,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 114,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 130,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 140,
+            "complexity": 3
+          },
+          {
+            "name": "toSvgElement",
+            "line": 154,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-shapes/shapes/Ellipse.ts",
+        "category": "plugins",
+        "responsibility": "Built-in shape behavior",
+        "lines": 185,
+        "complexity": 30,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 40,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 71,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 53,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 97,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 118,
+            "complexity": 1
+          },
+          {
+            "name": "updateGeometry",
+            "line": 135,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 149,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 159,
+            "complexity": 4
+          },
+          {
+            "name": "toSvgElement",
+            "line": 174,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-shapes/shapes/Line.ts",
+        "category": "plugins",
+        "responsibility": "Built-in shape behavior",
+        "lines": 181,
+        "complexity": 28,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 40,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 56,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 71,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 53,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 97,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 118,
+            "complexity": 1
+          },
+          {
+            "name": "updateGeometry",
+            "line": 135,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 149,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 159,
+            "complexity": 2
+          },
+          {
+            "name": "toSvgElement",
+            "line": 170,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-shapes/shapes/Rect.ts",
+        "category": "plugins",
+        "responsibility": "Built-in shape behavior",
+        "lines": 200,
+        "complexity": 34,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "describe",
+            "line": 31,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "getX",
+            "line": 68,
+            "complexity": 1
+          },
+          {
+            "name": "getY",
+            "line": 72,
+            "complexity": 1
+          },
+          {
+            "name": "getWidth",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "getHeight",
+            "line": 80,
+            "complexity": 1
+          },
+          {
+            "name": "getFill",
+            "line": 84,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 98,
+            "complexity": 3
+          },
+          {
+            "name": "validateGeometry",
+            "line": 116,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 133,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 134,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 135,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 144,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 149,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 154,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 159,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 131,
+            "complexity": 2
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 175,
+            "complexity": 3
+          },
+          {
+            "name": "toSvgElement",
+            "line": 189,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/builtin-shapes/shapes/Text.ts",
+        "category": "plugins",
+        "responsibility": "Built-in shape behavior",
+        "lines": 143,
+        "complexity": 27,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 30,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 41,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 52,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 38,
+            "complexity": 2
+          },
+          {
+            "name": "describe",
+            "line": 69,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "updatePosition",
+            "line": 107,
+            "complexity": 1
+          },
+          {
+            "name": "parseFiniteNumber",
+            "line": 114,
+            "complexity": 3
+          },
+          {
+            "name": "validatePosition",
+            "line": 124,
+            "complexity": 2
+          },
+          {
+            "name": "toSvgElement",
+            "line": 130,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      }
+    ],
+    "vscode": [
+      {
+        "file": "vscode-extension/src/SvgDocumentSymbolProvider.ts",
+        "category": "kernel",
+        "responsibility": "VSCode extension (excluded from CLI totals)",
+        "lines": 28,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 1
+          },
+          {
+            "name": "provideDocumentSymbols",
+            "line": 7,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "toSymbol",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "vscode-extension/src/SvgOutlineParser.ts",
+        "category": "kernel",
+        "responsibility": "VSCode extension (excluded from CLI totals)",
+        "lines": 51,
+        "complexity": 13,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 2
+          },
+          {
+            "name": "parse",
+            "line": 15,
+            "complexity": 6
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "vscode-extension/src/extension.ts",
+        "category": "kernel",
+        "responsibility": "VSCode extension (excluded from CLI totals)",
+        "lines": 40,
+        "complexity": 8,
+        "routines": [
+          {
+            "name": "provideFileDecoration",
+            "line": 6,
+            "complexity": 6
+          },
+          {
+            "name": "activate",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      }
+    ]
+  },
+  "delta": {
+    "kernel": {
+      "files": -20,
+      "lines": -1420,
+      "complexity": -221
+    },
+    "assembly": {
+      "files": 2,
+      "lines": 43,
+      "complexity": 21
+    },
+    "plugins": {
+      "files": 26,
+      "lines": 1499,
+      "complexity": 288
+    }
+  }
+}

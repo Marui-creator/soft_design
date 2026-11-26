@@ -1,6 +1,17 @@
 # SVG 命令行编辑器实验
 
+Phase 2 CLI 四个扩展点、调用位置清单、装配边界、架构 PlantUML 与 ADR 见
+[插件框架设计](plugin-framework.md)。框架和内置能力迁移已完成，stats、dir 命令插件
+已接入，运行及验证见 [命令插件](command-plugins.md)。box 与树标签仍待实现。
+配置加载器与目录访问适配器已在框架后接入，说明见
+[插件加载与目录访问](plugin-loading.md)。
+
 ## Phase 2：VSCode 扩展进度
+
+CLI 重构前已准备兼容性基线：在根目录执行 `npm run test:compat`，从 Git 的
+`final` tag 和当前代码分别构建，对照三个固定会话的 stdout 与序列化 SVG。
+2026-11-26 初次验证三组均逐字节一致。输入、预期结果、固定 SVG 与使用说明
+见 `doc/transcript/`，生成和验证脚本为 `scripts/verify-phase1.cjs`。
 
 扩展源码位于 `vscode-extension/`，安装、F5 调试与 Outline 手动验收步骤见
 该目录的 README。文件标记已在开发宿主中验证：SVG 文件显示 `[]`，普通文件
