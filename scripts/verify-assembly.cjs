@@ -9,8 +9,11 @@ const transcripts = path.join(root, "doc/transcript");
 const tempParent = path.resolve(os.tmpdir());
 const temp = fs.mkdtempSync(path.join(tempParent, "svg-assembly-"));
 const workspace = path.join(temp, "workspace");
-const sessions = ["cli-1", "cli-flowchart", "cli-plugins"];
+const sessions = ["cli-1", "cli-flowchart", "cli-plugins", "cli-box", "cli-box-boundaries"];
 const record = process.argv.includes("--record");
+const configFlag = process.argv.indexOf("--config");
+if (configFlag >= 0 && !process.argv[configFlag + 1]) throw new Error("missing --config path");
+const configPath = configFlag >= 0 ? path.resolve(process.argv[configFlag + 1]) : path.join(root, "plugins.config.json");
 
 function resetWorkspace() {
     if (path.dirname(workspace) !== temp || path.basename(workspace) !== "workspace") throw new Error("Unexpected workspace");
@@ -39,9 +42,21 @@ function replay(name, args) {
 try {
     for (const name of sessions) {
         const code = replay(name, []);
-        const config = replay(name, ["--config", path.join(root, "plugins.config.json")]);
+        const config = replay(name, ["--config", configPath]);
         assert.deepEqual(code.stdout, config.stdout, `${name}: A/B stdout differs`);
         assert.deepEqual(code.saved, config.saved, `${name}: A/B saved SVG differs`);
+        if (name === "cli-box") {
+            assert.doesNotMatch(code.stdout.toString(), /error:/);
+            assert.equal((code.saved["flowchart-box.svg"].toString().match(/data-kind="box"/g) ?? []).length, 2);
+        }
+        if (name === "cli-box-boundaries") {
+            const output = code.stdout.toString();
+            assert.equal((output.match(/error:/g) ?? []).length, 5);
+            assert.match(output, /error: cannot ungroup composite shape: n1/);
+            assert.match(output, /error: cannot detach required box part: n1-rect/);
+            assert.match(output, /error: cannot detach required box part: n1-label/);
+            assert.match(output, /error: id already exists: n1-label/);
+        }
         const expected = path.join(transcripts, "expected/assembly", `${name}.stdout.txt`);
         if (record) {
             fs.mkdirSync(path.dirname(expected), { recursive: true });

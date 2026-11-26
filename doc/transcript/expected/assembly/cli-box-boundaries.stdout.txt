@@ -1,0 +1,45 @@
+svg-editor 0.1 — type 'help' for commands
+svg> canvas 800x600 created
+svg> g#outer created
+svg> box#n1 created in g#outer
+svg> box#n2 created in g#n1
+svg> rect: 2  text: 2  (total 4, containers 3)
+svg> box#n1 updated: fill=#f5a623
+svg> edit undone
+svg> edit redone
+svg> box#n1 updated: label=处理数据 v2
+svg> edit undone
+svg> edit redone
+svg> box#n1 moved by (10,20)
+svg> edit undone
+svg> edit redone
+svg> error: cannot ungroup composite shape: n1
+svg> error: cannot detach required box part: n1-rect
+svg> error: cannot detach required box part: n1-label
+svg> error: cannot detach required box part: n1-rect
+svg> error: id already exists: n1-label
+svg> svg (800x600)
+└── g#outer children=1
+    └── g#n1 children=3 (box)
+        ├── rect#n1-rect x=130 y=120 width=160 height=60 fill=#f5a623
+        ├── text#n1-label x=150 y=155 text="处理数据 v2"
+        └── g#n2 children=2 (box)
+            ├── rect#n2-rect x=310 y=120 width=100 height=50 fill=#4a90d9
+            └── text#n2-label x=330 y=155 text="嵌套"
+svg> saved to nested-box.svg
+svg> read nested-box.svg
+svg> svg (800x600)
+└── g#outer children=1
+    └── g#n1 children=3 (box)
+        ├── rect#n1-rect x=130 y=120 width=160 height=60 fill=#f5a623
+        ├── text#n1-label x=150 y=155 text="处理数据 v2"
+        └── g#n2 children=2 (box)
+            ├── rect#n2-rect x=310 y=120 width=100 height=50 fill=#4a90d9
+            └── text#n2-label x=330 y=155 text="嵌套"
+svg> box#n2 updated: label=读回后修改
+svg> edit undone
+svg> edit redone
+svg> box#n1 deleted
+svg> edit undone
+svg> rect: 2  text: 2  (total 4, containers 3)
+svg> 
