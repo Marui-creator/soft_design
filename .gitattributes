@@ -1,0 +1,2 @@
+# Keep replay inputs and byte-for-byte expected outputs stable across platforms.
+doc/transcript/** text eol=lf

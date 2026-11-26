@@ -2,6 +2,11 @@
 
 ## Phase 2：VSCode 扩展进度
 
+CLI 重构前已准备兼容性基线：在根目录执行 `npm run test:compat`，从 Git 的
+`final` tag 和当前代码分别构建，对照三个固定会话的 stdout 与序列化 SVG。
+2026-11-26 初次验证三组均逐字节一致。输入、预期结果、固定 SVG 与使用说明
+见 `doc/transcript/`，生成和验证脚本为 `scripts/verify-phase1.cjs`。
+
 扩展源码位于 `vscode-extension/`，安装、F5 调试与 Outline 手动验收步骤见
 该目录的 README。文件标记已在开发宿主中验证：SVG 文件显示 `[]`，普通文件
 与 `.svg` 后缀目录不显示；原文件名和内容不变。

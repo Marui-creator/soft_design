@@ -1,0 +1,91 @@
+svg-editor 0.1 — type 'help' for commands
+svg> svg> 文档：
+  init [w] [h]
+  read <file.svg>
+  save [file.svg]
+  canvas [w] [h]
+
+图形编辑：
+  create <type> <id> [params…] [in <containerId>]
+  delete <id>
+  move <id> <dx> <dy>
+  scale <id> <factor>
+  set <id> <attr> <value>
+  group <newGid> <id1> <id2>…
+  ungroup <gid>
+  addto <gid> <id>
+  front <id>
+  back <id>
+
+显示：
+  tree [id]
+  show <id>
+  help
+
+撤销重做：
+  undo
+  redo
+
+支持的图形：rect、circle、ellipse、line、text、g。
+带空格的参数请使用双引号包裹。
+按 Ctrl+C 退出。
+svg> error: no document. use 'init' or 'read' first
+svg> canvas 400x300 created
+svg> canvas 400x300
+svg> canvas resized to 640x480
+svg> rect#r1 created
+svg> circle#c1 created
+svg> ellipse#e1 created
+svg> line#l1 created
+svg> text#t1 created
+svg> g#g1 created
+svg> rect#r1 moved into g#g1
+svg> text#t1 moved into g#g1
+svg> svg (640x480)
+├── circle#c1 cx=80 cy=90 r=12 fill=blue
+├── ellipse#e1 cx=100 cy=120 rx=20 ry=10 fill=green
+├── line#l1 x1=0 y1=0 x2=50 y2=50 stroke=black
+└── g#g1 children=2
+    ├── rect#r1 x=10 y=20 width=30 height=40 fill=red
+    └── text#t1 x=30 y=60 text="hello world"
+svg> g#g1 children=2
+├── rect#r1 x=10 y=20 width=30 height=40 fill=red
+└── text#t1 x=30 y=60 text="hello world"
+svg> rect#r1  parent=g#g1
+  x=10 y=20 width=30 height=40
+  fill=red
+svg> g#g1 moved by (5,10)
+svg> circle#c1 scaled by 2
+svg> rect#r1 updated: fill=yellow
+svg> text#t1 updated: text=updated text
+svg> ellipse#e1 brought to front
+svg> ellipse#e1 sent to back
+svg> g#g2 created with 2 children
+svg> error: cannot ungroup top-level container: g2
+svg> edit undone
+svg> edit redone
+svg> line#l1 deleted
+svg> edit undone
+svg> edit redone
+svg> error: id already exists: r1
+svg> error: unknown attribute: label
+svg> error: no such shape: missing
+svg> error: unknown command: unknown-command
+svg> svg (640x480)
+├── g#g1 children=2
+│   ├── rect#r1 x=15 y=30 width=30 height=40 fill=yellow
+│   └── text#t1 x=35 y=70 text="updated text"
+└── g#g2 children=2
+    ├── ellipse#e1 cx=100 cy=120 rx=20 ry=10 fill=green
+    └── circle#c1 cx=160 cy=180 r=24 fill=blue
+svg> saved to commands.svg
+svg> error: undo not allowed after io command
+svg> read commands.svg
+svg> svg (640x480)
+├── g#g1 children=2
+│   ├── rect#r1 x=15 y=30 width=30 height=40 fill=yellow
+│   └── text#t1 x=35 y=70 text="updated text"
+└── g#g2 children=2
+    ├── ellipse#e1 cx=100 cy=120 rx=20 ry=10 fill=green
+    └── circle#c1 cx=160 cy=180 r=24 fill=blue
+svg> 
