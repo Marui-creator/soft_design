@@ -5,12 +5,12 @@ svg> text#title created
 svg> circle#c1 created
 svg> rect#box created
 svg> g#markers created with 2 children
-svg> svg (800x600)
-├── rect#bg x=0 y=0 width=800 height=600 fill=#ffffff
-├── text#title x=20 y=40 text="My Diagram"
-└── g#markers children=2
-    ├── circle#c1 cx=100 cy=100 r=20 fill=red
-    └── rect#box x=200 y=80 width=60 height=60 fill=#3366ff
+svg> svg (800x600) *
+├── rect#bg x=0 y=0 width=800 height=600 fill=#ffffff *
+├── text#title x=20 y=40 text="My Diagram" *
+└── g#markers children=2 *
+    ├── circle#c1 cx=100 cy=100 r=20 fill=red *
+    └── rect#box x=200 y=80 width=60 height=60 fill=#3366ff *
 svg> circle#c1 moved by (30,0)
 svg> edit undone
 svg> edit redone

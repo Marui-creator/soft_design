@@ -1,0 +1,59 @@
+svg-editor 0.1 — type 'help' for commands
+svg> canvas 800x600 created
+svg> g#flow created
+svg> box#n1 created in g#flow
+svg> svg (800x600) *
+└── g#flow children=1 *
+    └── g#n1 children=2 (box) *
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#4a90d9 *
+        └── text#n1-label x=140 y=135 text="开始" *
+svg> saved to star-demo.svg
+svg> svg (800x600)
+└── g#flow children=1
+    └── g#n1 children=2 (box)
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#4a90d9
+        └── text#n1-label x=140 y=135 text="开始"
+svg> box#n1 updated: fill=#f5a623
+svg> svg (800x600) *
+└── g#flow children=1 *
+    └── g#n1 children=2 (box) *
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#f5a623 *
+        └── text#n1-label x=140 y=135 text="开始"
+svg> edit undone
+svg> svg (800x600)
+└── g#flow children=1
+    └── g#n1 children=2 (box)
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#4a90d9
+        └── text#n1-label x=140 y=135 text="开始"
+svg> edit redone
+svg> svg (800x600) *
+└── g#flow children=1 *
+    └── g#n1 children=2 (box) *
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#f5a623 *
+        └── text#n1-label x=140 y=135 text="开始"
+svg> saved to star-demo.svg
+svg> box#n1 updated: label=处理数据 v2
+svg> svg (800x600) *
+└── g#flow children=1 *
+    └── g#n1 children=2 (box) *
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#f5a623
+        └── text#n1-label x=140 y=135 text="处理数据 v2" *
+svg> edit undone
+svg> svg (800x600)
+└── g#flow children=1
+    └── g#n1 children=2 (box)
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#f5a623
+        └── text#n1-label x=140 y=135 text="开始"
+svg> edit redone
+svg> svg (800x600) *
+└── g#flow children=1 *
+    └── g#n1 children=2 (box) *
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#f5a623
+        └── text#n1-label x=140 y=135 text="处理数据 v2" *
+svg> read star-demo.svg
+svg> svg (800x600)
+└── g#flow children=1
+    └── g#n1 children=2 (box)
+        ├── rect#n1-rect x=120 y=100 width=160 height=60 fill=#f5a623
+        └── text#n1-label x=140 y=135 text="开始"
+svg> 
