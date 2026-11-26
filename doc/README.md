@@ -4,7 +4,8 @@ Phase 2 CLI 四个扩展点、调用位置清单、装配边界、架构 PlantUM
 [插件框架设计](plugin-framework.md)。框架和内置能力迁移已完成，stats、dir 命令插件
 已接入，运行及验证见 [命令插件](command-plugins.md)。
 box、fill/label 属性处理及 `(box)` 标签已完成，见 [Box 插件](box-plugin.md) 与
-[A/B 接入证据](box-evidence.md)。modified-star 尚待实现。
+[A/B 接入证据](box-evidence.md)。modified-star 已完成，与 `(box)` 共存，见
+[未保存变化标签](tree-star.md)。最终指标更新、提交自查和 p2 tag 在收尾阶段完成。
 配置加载器与目录访问适配器已在框架后接入，说明见
 [插件加载与目录访问](plugin-loading.md)。
 

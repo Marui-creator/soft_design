@@ -56,7 +56,7 @@ BoxShape 只暴露公开领域方法 setBodyFill/setTitle。BoxAttributeHandler 
 未定义属性仍报 unknown attribute；普通 rect 不会因插件加载而接受 label。
 
 BoxTypeDecorator 只负责 box 节点的 `(box)`，不标记普通分组、根或叶子，也不知道
-后续 modified-star。TreeCommand 与渲染器未改动。modified-star 尚未实现。
+modified-star。后续星号插件现已独立接入；两个插件以及 TreeCommand 均未因此修改。
 
 ## ADR-005：完整子树、ID 与子部件保护
 
@@ -99,7 +99,7 @@ npm run typecheck
 npm test
 node --test test/box.test.cjs
 npm run test:compat
-npm run test:assembly -- --config plugins.box.config.json
+npm run test:assembly
 ```
 
 独立单测只使用公开领域对象和替身 rect/text，不导入其他插件。

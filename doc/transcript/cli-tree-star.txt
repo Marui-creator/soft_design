@@ -1,0 +1,21 @@
+init 800 600
+create g flow
+create box n1 120 100 160 60 "开始" in flow
+tree
+save star-demo.svg
+tree
+set n1 fill #f5a623
+tree
+undo
+tree
+redo
+tree
+save star-demo.svg
+set n1 label "处理数据 v2"
+tree
+undo
+tree
+redo
+tree
+read star-demo.svg
+tree

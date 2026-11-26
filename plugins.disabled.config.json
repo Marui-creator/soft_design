@@ -1,6 +1,8 @@
 {
   "plugins": [
     { "module": "./src/plugins/stats", "enabled": false },
-    { "module": "./src/plugins/dir", "enabled": false }
+    { "module": "./src/plugins/dir", "enabled": false },
+    { "module": "./src/plugins/box", "enabled": false },
+    { "module": "./src/plugins/tree-star", "enabled": false }
   ]
 }
