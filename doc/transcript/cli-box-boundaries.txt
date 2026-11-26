@@ -1,0 +1,29 @@
+init 800 600
+create g outer
+create box n1 120 100 160 60 "开始" in outer
+create box n2 300 100 100 50 "嵌套" in n1
+stats
+set n1 fill #f5a623
+undo
+redo
+set n1 label "处理数据 v2"
+undo
+redo
+move n1 10 20
+undo
+redo
+ungroup n1
+delete n1-rect
+addto outer n1-label
+group stolen n1-rect
+create rect n1-label 0 0 1 1
+tree
+save nested-box.svg
+read nested-box.svg
+tree
+set n2 label "读回后修改"
+undo
+redo
+delete n1
+undo
+stats

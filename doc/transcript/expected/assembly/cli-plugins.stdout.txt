@@ -62,7 +62,7 @@ svg> 文档：
   undo
   redo
 
-支持的图形：rect、circle、ellipse、line、text、g。
+支持的图形：rect、circle、ellipse、line、text、g、box。
 带空格的参数请使用双引号包裹。
 按 Ctrl+C 退出。
 svg> 
