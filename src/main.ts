@@ -1,3 +1,3 @@
-import { createApplication } from "./host/createApplication";
+import { startApplication } from "./host/startApplication";
 
-createApplication().application.run();
+startApplication();

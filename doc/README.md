@@ -2,7 +2,8 @@
 
 Phase 2 CLI 四个扩展点、调用位置清单、装配边界、架构 PlantUML 与 ADR 见
 [插件框架设计](plugin-framework.md)。本步仅完成框架和内置能力迁移；必交的可选插件
-及配置加载器尚待后续提交。
+尚待后续提交。配置加载器与目录访问适配器已在框架后接入，说明见
+[插件加载与目录访问](plugin-loading.md)。
 
 ## Phase 2：VSCode 扩展进度
 

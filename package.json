@@ -7,7 +7,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "cli": "tsx src/main.ts",
+    "cli": "npm run build --silent && node dist/main.js",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test:compat": "node scripts/verify-phase1.cjs",

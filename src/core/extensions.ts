@@ -2,6 +2,7 @@ import type { Command } from "../commands/Command";
 import type { Shape } from "../model/Shape";
 import type { SvgDocument } from "../model/SvgDocument";
 import type { SvgElement } from "../model/SvgElement";
+import type { DirectoryReader } from "./DirectoryReader";
 
 export interface ShapeReadContext { read(element: SvgElement): Shape; }
 export interface ShapeProvider {
@@ -45,6 +46,7 @@ export interface ExtensionReader {
 }
 export interface PluginContext {
     readonly editor: EditorAccess;
+    readonly directories: DirectoryReader;
     createShape(type: string, args: readonly string[]): Shape;
     registerShape(name: string, provider: ShapeProvider): void;
     registerCommand(name: string, command: CommandContribution): void;
@@ -58,6 +60,7 @@ export interface EditorAccess {
 }
 export interface PluginServices {
     readonly editor: EditorAccess;
+    readonly directories?: DirectoryReader;
     createShape(type: string, args: readonly string[]): Shape;
 }
 export interface PluginManifest {

@@ -30,14 +30,17 @@ import { ShapeFactory } from "../model/ShapeFactory";
 import { SvgFileWriter } from "../infrastructure/SvgFileWriter";
 import { SvgFileReader } from "../infrastructure/SvgFileReader";
 import { SvgXmlParser } from "../infrastructure/SvgXmlParser";
+import { NodeDirectoryReader } from "../infrastructure/NodeDirectoryReader";
+import type { DirectoryReader } from "../core/DirectoryReader";
 
 /** 组合根：具体实现的选择与对象连接只发生在宿主一侧。 */
-export function createApplication() {
+export function createApplication(options: { directories?: DirectoryReader } = {}) {
     const registry = new ExtensionRegistry();
     const session = new EditorSession();
     const history = new CommandHistory(session);
     const factory = new ShapeFactory(registry);
-    const services = { editor: session, createShape: factory.create.bind(factory) };
+    const services = { editor: session, directories: options.directories ?? new NodeDirectoryReader(),
+        createShape: factory.create.bind(factory) };
     activatePlugin(registry, new BuiltinShapesPlugin(), undefined, services);
     const edit = (command: Command) => new HistoryEditCommand(command, history);
     const commands = [

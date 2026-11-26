@@ -35,8 +35,10 @@ function replay(directory, name) {
   fs.mkdirSync(cwd);
   fs.cpSync(path.join(transcripts, "fixtures"), cwd, { recursive: true });
   const input = fs.readFileSync(path.join(transcripts, `${name}.txt`));
-  // No plugins.config.json is copied: this comparison requires optional plugins disabled.
-  const output = run(process.execPath, [path.join(directory, "dist/main.js")], { cwd, input });
+  // Explicitly disable optional plugins for the current application, preserving historical invocation.
+  const args = [path.join(directory, "dist/main.js")];
+  if (directory === current) args.push("--no-plugins");
+  const output = run(process.execPath, args, { cwd, input });
   const files = Object.fromEntries(fs.readdirSync(cwd)
     .filter((file) => file.endsWith(".svg") && file !== "other.svg")
     .sort().map((file) => [file, fs.readFileSync(path.join(cwd, file))]));

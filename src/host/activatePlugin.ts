@@ -11,6 +11,10 @@ export function activatePlugin(registry: ExtensionRegistry, plugin: Plugin, opti
         fn(...args);
     };
     const context: PluginContext = Object.freeze({
+        directories: services?.directories ?? {
+            currentDirectory: () => { throw new Error("no directory service"); },
+            read: () => { throw new Error("no directory service"); },
+        },
         editor: services?.editor ?? {
             getDocument: () => { throw new Error("no editor service"); },
             getSavedDocument: () => undefined,
