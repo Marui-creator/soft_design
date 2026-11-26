@@ -117,7 +117,8 @@ npm run test:assembly -- --config plugins.box.config.json
 方式 A 的运行代码只新增 box 包并修改 src/host/codePlugins.ts。
 方式 B 独立接入同一 box 包，只改 plugins.config.json，不修改既有运行源码。
 最后合并两条演示历史，使常用代码入口与根配置都支持 box；不改动已有 tag。
-提交哈希和可复核 diff 会在演示完成后记录到 box-evidence.md。
+提交哈希和可复核 diff 已记录到 [box-evidence.md](box-evidence.md)。两条历史合并后
+根 plugins.config.json 与独立演示配置相同，也可直接运行 `npm run test:assembly`。
 
 新增测试和会话脚本属于验证材料，独立演示配置用于 A 分支验证 B 路径；这些不
 包含内核运行逻辑。命令 help 的预期输出多出 box 类型，原有无插件基线不更新。

@@ -68,7 +68,8 @@ DirCommand 类，名称、参数校验和 help 文案由对应类提供。
 Map，保持首次出现顺序。叶子类型使用 SVG 的 data-kind（若存在），否则标签名。
 当前内置叶子分别是 rect、circle、ellipse、line、text。空文档输出
 `(total 0, containers 0)`。容器扩展只需遵循 Shape.isContainer/getChildren，
-无需修改统计命令；box 尚未实现，本步通过容器替身验证复合节点的统计契约。
+无需修改统计命令；初次接入时通过容器替身验证，后续 box 阶段已用真实嵌套 box
+验证 rect/text 叶子与 containers 的统计，StatsCommand 本身未修改。
 
 ## dir 与适配器模式
 

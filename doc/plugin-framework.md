@@ -8,7 +8,8 @@ tags: []
 
 本步建立四个扩展点、内置能力的注册装配和公共插件 API。
 stats、dir 已在后续命令阶段接入，见 [命令插件](command-plugins.md)。
-box、modified-star、box 标签仍待后续独立提交接入；配置模块加载器已在
+box、属性处理及 `(box)` 标签已在独立 A/B 提交中接入，见 [Box 插件](box-plugin.md)；
+modified-star 仍待实现。配置模块加载器已在
 框架后的独立基础设施阶段实现，详见 [加载与目录访问](plugin-loading.md)。
 本步的测试插件只验证契约，不冒充这些必交插件。
 
@@ -37,10 +38,10 @@ Group 是公共的通用组合领域对象，负责嵌套、移动、克隆及�
 
 | 接口 | 职责及内核调用位置 | 当前实现 | 无可选插件时 | 违反契约 |
 | --- | --- | --- | --- | --- |
-| ShapeProvider | ShapeFactory.create / fromSvgElement 分发创建与读回 | builtin-shapes 中六个 Provider 类；测试 MarkerProvider | 默认六种图形；未注册类型报未知类型 | 重名拒绝；方法不完整拒绝；创建/读回须返回同 ID 的 Shape；最高读回优先级多重命中拒绝 |
+| ShapeProvider | ShapeFactory.create / fromSvgElement 分发创建与读回 | builtin-shapes 中六个 Provider 类；box/BoxProvider；测试 MarkerProvider | 默认六种图形；未注册类型报未知类型；缺 box 时读回普通 g | 重名拒绝；方法不完整拒绝；创建/读回须返回同 ID 的 Shape；最高读回优先级多重命中拒绝 |
 | Command / CommandContribution | CliApplication.run 查找 name 并 execute；HelpCommand.execute 查询帮助元数据 | 19 个内置命令贡献，NamedCommand 适配既有命令；独立 StatsCommand、DirCommand 插件；测试 PingCommand | 禁用可选插件后原命令和帮助输出不变；未注册命令报 unknown command | 名称不一致、缺方法/帮助/分组拒绝；执行错误由 CLI 输出 error 并继续 |
-| TreeDecorator | TreeCommand.withTags 为根标题和各节点追加标签 | 当前生产装配为空；测试 FixedTag | tree 逐字节保持原样 | 重名拒绝；非字符串或带换行的返回值报 invalid tree decorator result |
-| AttributeHandler | SetCommand.execute 在原属性规则之前匹配并调用 | 当前生产装配为空；测试 PairAttribute | 回退原图形白名单；未定义属性报 unknown attribute | 多重匹配拒绝；处理器抛错整体回滚，不再尝试默认处理 |
+| TreeDecorator | TreeCommand.withTags 为根标题和各节点追加标签 | box/BoxTypeDecorator；测试 FixedTag；modified-star 待实现 | 无标签插件时 tree 逐字节保持原样 | 重名拒绝；非字符串或带换行的返回值报 invalid tree decorator result |
+| AttributeHandler | SetCommand.execute 在原属性规则之前匹配并调用 | box/BoxAttributeHandler，处理 fill/label；测试 PairAttribute | 回退原图形白名单；未定义属性报 unknown attribute | 多重匹配拒绝；处理器抛错整体回滚，不再尝试默认处理 |
 
 TreeCommand 和 SetCommand 是框架接入接口的内置命令实现，位于插件包内。
 上述调用位置是框架控制流中的实际调用点，新增标签或属性处理器时不再修改它们。
