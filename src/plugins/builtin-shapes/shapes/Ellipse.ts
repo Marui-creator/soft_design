@@ -1,5 +1,5 @@
-import { Shape } from "./Shape";
-import { SvgElement } from "./SvgElement";
+import { Shape } from "../../../core";
+import { SvgElement } from "../../../core";
 
 export class Ellipse extends Shape {
     private cx: number;

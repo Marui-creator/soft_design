@@ -1,30 +1,38 @@
-import { Shape } from "./Shape";
-import { SvgElement } from "./SvgElement";
+import { Shape } from "../../../core";
+import { SvgElement } from "../../../core";
 
-export class Text extends Shape {
-    private x: number;
-    private y: number;
-    private content: string;
+export class Circle extends Shape {
+    private cx: number;
+    private cy: number;
+    private r: number;
     private fill: string | undefined;
     private stroke: string | undefined;
     private strokeWidth: number | undefined;
 
     public constructor(
         id: string,
-        x: number,
-        y: number,
-        content: string,
+        cx: number,
+        cy: number,
+        r: number,
+        fill?: string,
     ) {
         super(id);
-        Text.validatePosition(x, y);
+        Circle.validateGeometry(cx, cy, r);
 
-        this.x = x;
-        this.y = y;
-        this.content = content;
+        this.cx = cx;
+        this.cy = cy;
+        this.r = r;
+        this.fill = fill;
     }
 
     public move(dx: number, dy: number): void {
-        this.updatePosition(this.x + dx, this.y + dy);
+        const nextCx = this.cx + dx;
+        const nextCy = this.cy + dy;
+
+        Circle.validateGeometry(nextCx, nextCy, this.r);
+
+        this.cx = nextCx;
+        this.cy = nextCy;
     }
 
     public scale(factor: number): void {
@@ -32,12 +40,19 @@ export class Text extends Shape {
             throw new Error("scale factor must be positive");
         }
 
-        this.updatePosition(this.x * factor, this.y * factor);
+        const nextCx = this.cx * factor;
+        const nextCy = this.cy * factor;
+        const nextR = this.r * factor;
+
+        Circle.validateGeometry(nextCx, nextCy, nextR);
+
+        this.cx = nextCx;
+        this.cy = nextCy;
+        this.r = nextR;
     }
 
     public setAttribute(name: string, value: string): void {
         const setters = new Map<string, (value: string) => void>([
-            ["text", (text) => { this.content = text; }],
             ["fill", (text) => { this.fill = text; }],
             ["stroke", (text) => { this.stroke = text; }],
             ["stroke-width", (text) => {
@@ -49,11 +64,20 @@ export class Text extends Shape {
 
                 this.strokeWidth = number;
             }],
-            ["x", (text) => {
-                this.updatePosition(this.parseFiniteNumber(text), this.y);
+            ["cx", (text) => {
+                const number = this.parseFiniteNumber(text);
+                Circle.validateGeometry(number, this.cy, this.r);
+                this.cx = number;
             }],
-            ["y", (text) => {
-                this.updatePosition(this.x, this.parseFiniteNumber(text));
+            ["cy", (text) => {
+                const number = this.parseFiniteNumber(text);
+                Circle.validateGeometry(this.cx, number, this.r);
+                this.cy = number;
+            }],
+            ["r", (text) => {
+                const number = this.parseFiniteNumber(text);
+                Circle.validateGeometry(this.cx, this.cy, number);
+                this.r = number;
             }],
         ]);
 
@@ -68,9 +92,8 @@ export class Text extends Shape {
 
     public describe(): string {
         const lines = [
-            `text#${this.getId()}  parent=${this.getParentDescription()}`,
-            `  x=${this.x} y=${this.y}`,
-            `  text=${JSON.stringify(this.content)}`,
+            `circle#${this.getId()}  parent=${this.getParentDescription()}`,
+            `  cx=${this.cx} cy=${this.cy} r=${this.r}`,
         ];
 
         if (this.fill !== undefined) {
@@ -88,27 +111,20 @@ export class Text extends Shape {
         return lines.join("\n");
     }
 
-    public clone(): Text {
-        const copy = new Text(
+    public clone(): Circle {
+        const copy = new Circle(
             this.getId(),
-            this.x,
-            this.y,
-            this.content,
+            this.cx,
+            this.cy,
+            this.r,
+            this.fill,
         );
 
-        copy.fill = this.fill;
         copy.stroke = this.stroke;
         copy.strokeWidth = this.strokeWidth;
 
         this.copyBaseTo(copy);
         return copy;
-    }
-
-    private updatePosition(x: number, y: number): void {
-        Text.validatePosition(x, y);
-
-        this.x = x;
-        this.y = y;
     }
 
     private parseFiniteNumber(value: string): number {
@@ -121,23 +137,28 @@ export class Text extends Shape {
         return number;
     }
 
-    private static validatePosition(x: number, y: number): void {
-        if (![x, y].every(Number.isFinite)) {
+    private static validateGeometry(
+        cx: number,
+        cy: number,
+        r: number,
+    ): void {
+        if (![cx, cy, r].every(Number.isFinite)) {
             throw new Error("geometry values must be finite numbers");
+        }
+
+        if (r < 0) {
+            throw new Error("circle radius must not be negative");
         }
     }
 
     public toSvgElement(): SvgElement {
-        const element = this.createSvgElement("text", {
-            x: this.x,
-            y: this.y,
+        return this.createSvgElement("circle", {
+            cx: this.cx,
+            cy: this.cy,
+            r: this.r,
             fill: this.fill,
             stroke: this.stroke,
             "stroke-width": this.strokeWidth,
         });
-
-        element.setText(this.content);
-
-        return element;
     }
 }

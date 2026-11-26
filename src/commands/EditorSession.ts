@@ -3,11 +3,13 @@ import { SvgDocument } from "../model/SvgDocument";
 export class EditorSession {
     private document: SvgDocument | undefined;
     private filePath: string | undefined;
+    private savedDocument: SvgDocument | undefined;
 
     public init(width = 800, height = 600): SvgDocument {
         const document = new SvgDocument(width, height);
         this.document = document;
         this.filePath = undefined;
+        this.savedDocument = undefined;
         return document;
     }
 
@@ -34,6 +36,11 @@ export class EditorSession {
 
     public setFilePath(path: string): void {
         this.filePath = path;
+        this.savedDocument = this.captureDocument();
+    }
+
+    public getSavedDocument(): SvgDocument | undefined {
+        return this.savedDocument?.clone();
     }
 
     public openDocument(
@@ -42,5 +49,6 @@ export class EditorSession {
     ): void {
         this.document = document;
         this.filePath = path;
+        this.savedDocument = document.clone();
     }
 }

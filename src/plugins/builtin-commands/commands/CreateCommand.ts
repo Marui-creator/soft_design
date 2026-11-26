@@ -1,6 +1,6 @@
-import { Command } from "./Command";
-import { EditorSession } from "./EditorSession";
-import { ShapeFactory } from "../model/ShapeFactory";
+import { Command } from "../../../core";
+import { EditorSession } from "../../../core";
+import { ShapeFactory } from "../../../core";
 
 export class CreateCommand implements Command {
     public constructor(

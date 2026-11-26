@@ -1,5 +1,5 @@
-import { Shape } from "./Shape";
-import { SvgElement } from "./SvgElement";
+import { Shape } from "../../../core";
+import { SvgElement } from "../../../core";
 
 export class Rect extends Shape {
     private x: number;

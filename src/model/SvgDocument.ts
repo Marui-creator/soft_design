@@ -244,6 +244,7 @@ export class SvgDocument {
 
     public ungroup(id: string): void {
         const group = this.getContainer(id);
+        if (!group.canUngroup()) throw new Error(`cannot ungroup container: ${id}`);
         const parentId = group.getParentId();
 
         if (parentId === undefined) {

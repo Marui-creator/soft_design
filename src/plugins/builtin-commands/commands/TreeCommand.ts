@@ -1,9 +1,10 @@
-import { Command } from "./Command";
-import { EditorSession } from "./EditorSession";
-import { Shape } from "../model/Shape";
+import { Command } from "../../../core";
+import { EditorSession } from "../../../core";
+import { Shape } from "../../../core";
+import type { ExtensionReader } from "../../../core";
 
 export class TreeCommand implements Command {
-    public constructor(private readonly session: EditorSession) { }
+    public constructor(private readonly session: EditorSession, private readonly extensions: ExtensionReader) { }
 
     public execute(args: readonly string[]): string {
         const document = this.session.getDocument();
@@ -21,7 +22,7 @@ export class TreeCommand implements Command {
             this.appendChildren(shape.getChildren(), "", lines);
         } else {
             lines.push(
-                `svg (${document.getWidth()}x${document.getHeight()})`,
+                this.withTags(`svg (${document.getWidth()}x${document.getHeight()})`),
             );
 
             this.appendChildren(document.getShapes(), "", lines);
@@ -65,6 +66,16 @@ export class TreeCommand implements Command {
             parts.push(`transform=${JSON.stringify(transform)}`);
         }
 
-        return parts.join(" ");
+        return this.withTags(parts.join(" "), shape);
+    }
+
+    private withTags(label: string, shape?: Shape): string {
+        const context = { document: this.session.getDocument(), savedDocument: this.session.getSavedDocument(), shape };
+        const tags = this.extensions.getDecorators().map((decorator) => {
+            const tag = decorator.decorate(context);
+            if (typeof tag !== "string" || /[\r\n]/.test(tag)) throw new Error("invalid tree decorator result");
+            return tag;
+        }).filter((tag) => tag.length > 0);
+        return tags.length === 0 ? label : `${label} ${tags.join(" ")}`;
     }
 }

@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { EditorSession } from "./EditorSession";
+import { Command } from "../../../core";
+import { EditorSession } from "../../../core";
 
 export class ShowCommand implements Command {
     public constructor(private readonly session: EditorSession) { }

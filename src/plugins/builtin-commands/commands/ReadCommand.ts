@@ -1,7 +1,7 @@
-import { Command } from "./Command";
-import { CommandHistory } from "./CommandHistory";
-import { DocumentReader } from "./DocumentReader";
-import { EditorSession } from "./EditorSession";
+import { Command } from "../../../core";
+import { CommandHistory } from "../../../core";
+import { DocumentReader } from "../../../core";
+import { EditorSession } from "../../../core";
 
 export class ReadCommand implements Command {
     public constructor(

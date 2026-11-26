@@ -1,6 +1,6 @@
-import { Command } from "./Command";
-import { EditorSession } from "./EditorSession";
-import { CommandHistory } from "./CommandHistory";
+import { Command } from "../../../core";
+import { EditorSession } from "../../../core";
+import { CommandHistory } from "../../../core";
 
 export class CanvasCommand implements Command {
     public constructor(

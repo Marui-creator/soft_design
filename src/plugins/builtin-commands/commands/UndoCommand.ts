@@ -1,5 +1,5 @@
-import { Command } from "./Command";
-import { CommandHistory } from "./CommandHistory";
+import { Command } from "../../../core";
+import { CommandHistory } from "../../../core";
 
 export class UndoCommand implements Command {
     public constructor(private readonly history: CommandHistory) { }
