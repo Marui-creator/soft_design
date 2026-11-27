@@ -18,6 +18,11 @@
         "complexity": 0
       }
     },
+    "cliTotal": {
+      "files": 41,
+      "lines": 2868,
+      "complexity": 538
+    },
     "cli": [
       {
         "file": "src/cli/CliApplication.ts",
@@ -1797,23 +1802,28 @@
     "vscode": []
   },
   "after": {
-    "commit": "9d5721ba73fc3c9d67c97646d02d92627cbe8aaf",
+    "commit": "a05add8f33f66d6e16f1c4731a3df5b15f3f3e70",
     "totals": {
       "kernel": {
-        "files": 20,
-        "lines": 1378,
-        "complexity": 316
+        "files": 22,
+        "lines": 1407,
+        "complexity": 324
       },
       "assembly": {
-        "files": 3,
-        "lines": 113,
-        "complexity": 22
+        "files": 6,
+        "lines": 278,
+        "complexity": 93
       },
       "plugins": {
-        "files": 26,
-        "lines": 1499,
-        "complexity": 288
+        "files": 31,
+        "lines": 1766,
+        "complexity": 395
       }
+    },
+    "cliTotal": {
+      "files": 59,
+      "lines": 3451,
+      "complexity": 812
     },
     "cli": [
       {
@@ -2063,6 +2073,20 @@
         ]
       },
       {
+        "file": "src/core/DirectoryReader.ts",
+        "category": "kernel",
+        "responsibility": "Extension contracts, public API and registry",
+        "lines": 10,
+        "complexity": 1,
+        "routines": [
+          {
+            "name": "<module>",
+            "line": 2,
+            "complexity": 1
+          }
+        ]
+      },
+      {
         "file": "src/core/ExtensionRegistry.ts",
         "category": "kernel",
         "responsibility": "Extension contracts, public API and registry",
@@ -2140,7 +2164,7 @@
         "file": "src/core/extensions.ts",
         "category": "kernel",
         "responsibility": "Extension contracts, public API and registry",
-        "lines": 73,
+        "lines": 76,
         "complexity": 1,
         "routines": [
           {
@@ -2154,7 +2178,7 @@
         "file": "src/core/index.ts",
         "category": "kernel",
         "responsibility": "Extension contracts, public API and registry",
-        "lines": 13,
+        "lines": 14,
         "complexity": 1,
         "routines": [
           {
@@ -2168,8 +2192,8 @@
         "file": "src/host/activatePlugin.ts",
         "category": "assembly",
         "responsibility": "Startup assembly and activation",
-        "lines": 44,
-        "complexity": 18,
+        "lines": 48,
+        "complexity": 21,
         "routines": [
           {
             "name": "<anonymous>",
@@ -2193,23 +2217,52 @@
           },
           {
             "name": "<anonymous>",
-            "line": 18,
-            "complexity": 2
-          },
-          {
-            "name": "<anonymous>",
-            "line": 30,
+            "line": 19,
             "complexity": 1
           },
           {
             "name": "<anonymous>",
-            "line": 37,
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 41,
             "complexity": 1
           },
           {
             "name": "activatePlugin",
             "line": 5,
-            "complexity": 8
+            "complexity": 9
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/host/codePlugins.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 13,
+        "complexity": 2,
+        "routines": [
+          {
+            "name": "assembleOptionalPlugins",
+            "line": 8,
+            "complexity": 1
           },
           {
             "name": "<module>",
@@ -2222,17 +2275,129 @@
         "file": "src/host/createApplication.ts",
         "category": "assembly",
         "responsibility": "Startup assembly and activation",
-        "lines": 66,
-        "complexity": 3,
+        "lines": 69,
+        "complexity": 4,
         "routines": [
           {
             "name": "<anonymous>",
-            "line": 42,
+            "line": 45,
             "complexity": 1
           },
           {
             "name": "createApplication",
-            "line": 35,
+            "line": 37,
+            "complexity": 2
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/host/plugins/PluginLoader.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 133,
+        "complexity": 58,
+        "routines": [
+          {
+            "name": "object",
+            "line": 11,
+            "complexity": 3
+          },
+          {
+            "name": "reason",
+            "line": 14,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "loadInstance",
+            "line": 26,
+            "complexity": 4
+          },
+          {
+            "name": "loadConfig",
+            "line": 41,
+            "complexity": 12
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "loadModule",
+            "line": 62,
+            "complexity": 10
+          },
+          {
+            "name": "<anonymous>",
+            "line": 122,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 127,
+            "complexity": 2
+          },
+          {
+            "name": "readManifest",
+            "line": 100,
+            "complexity": 21
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/host/startApplication.ts",
+        "category": "assembly",
+        "responsibility": "Startup assembly and activation",
+        "lines": 12,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "startApplication",
+            "line": 5,
+            "complexity": 6
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/infrastructure/NodeDirectoryReader.ts",
+        "category": "kernel",
+        "responsibility": "XML and filesystem adapters",
+        "lines": 15,
+        "complexity": 7,
+        "routines": [
+          {
+            "name": "currentDirectory",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 4
+          },
+          {
+            "name": "read",
+            "line": 8,
             "complexity": 1
           },
           {
@@ -2825,6 +2990,189 @@
             "name": "getChildren",
             "line": 63,
             "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/box/BoxShape.ts",
+        "category": "plugins",
+        "responsibility": "Composite domain object and required-part protection",
+        "lines": 68,
+        "complexity": 30,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 11,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 8,
+            "complexity": 7
+          },
+          {
+            "name": "isContainer",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "getLabel",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "getChildren",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "containsId",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "insertChild",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "removeChild",
+            "line": 30,
+            "complexity": 3
+          },
+          {
+            "name": "canUngroup",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "setParentId",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "setTransform",
+            "line": 46,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 50,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 52,
+            "complexity": 1
+          },
+          {
+            "name": "setBodyFill",
+            "line": 53,
+            "complexity": 1
+          },
+          {
+            "name": "setTitle",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "describe",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "clone",
+            "line": 57,
+            "complexity": 1
+          },
+          {
+            "name": "toSvgElement",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/box/index.ts",
+        "category": "plugins",
+        "responsibility": "Box provider, attribute semantics and type label",
+        "lines": 82,
+        "complexity": 36,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 14,
+            "complexity": 6
+          },
+          {
+            "name": "canRead",
+            "line": 28,
+            "complexity": 2
+          },
+          {
+            "name": "read",
+            "line": 32,
+            "complexity": 5
+          },
+          {
+            "name": "handles",
+            "line": 47,
+            "complexity": 3
+          },
+          {
+            "name": "apply",
+            "line": 50,
+            "complexity": 5
+          },
+          {
+            "name": "decorate",
+            "line": 60,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 74,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 70,
+            "complexity": 9
           },
           {
             "name": "<module>",
@@ -3946,6 +4294,123 @@
             "complexity": 1
           }
         ]
+      },
+      {
+        "file": "src/plugins/dir/index.ts",
+        "category": "plugins",
+        "responsibility": "Read-only directory command against DirectoryReader",
+        "lines": 30,
+        "complexity": 14,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 9,
+            "complexity": 4
+          },
+          {
+            "name": "activate",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/stats/index.ts",
+        "category": "plugins",
+        "responsibility": "Read-only depth-first shape statistics",
+        "lines": 37,
+        "complexity": 12,
+        "routines": [
+          {
+            "name": "<anonymous>",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 9,
+            "complexity": 3
+          },
+          {
+            "name": "activate",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "file": "src/plugins/tree-star/index.ts",
+        "category": "plugins",
+        "responsibility": "Saved-content comparison and dirty tree label",
+        "lines": 50,
+        "complexity": 15,
+        "routines": [
+          {
+            "name": "decorate",
+            "line": 13,
+            "complexity": 7
+          },
+          {
+            "name": "<anonymous>",
+            "line": 34,
+            "complexity": 2
+          },
+          {
+            "name": "updateBaseline",
+            "line": 24,
+            "complexity": 4
+          },
+          {
+            "name": "activate",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
       }
     ],
     "vscode": [
@@ -4045,19 +4510,19 @@
   },
   "delta": {
     "kernel": {
-      "files": -20,
-      "lines": -1420,
-      "complexity": -221
+      "files": -18,
+      "lines": -1391,
+      "complexity": -213
     },
     "assembly": {
-      "files": 2,
-      "lines": 43,
-      "complexity": 21
+      "files": 5,
+      "lines": 208,
+      "complexity": 92
     },
     "plugins": {
-      "files": 26,
-      "lines": 1499,
-      "complexity": 288
+      "files": 31,
+      "lines": 1766,
+      "complexity": 395
     }
   }
 }

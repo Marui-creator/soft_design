@@ -1,20 +1,27 @@
+---
+noteId: "adfb2cb0e97911f185a7b5fa6e6e8700"
+tags: []
+
+---
+
 # CLI metrics (generated)
 
 Before: 2a816c205b6518c1286cae56fe513135c1dbb64f
-After: 9d5721ba73fc3c9d67c97646d02d92627cbe8aaf
+After: a05add8f33f66d6e16f1c4731a3df5b15f3f3e70
 
 | Category | Before LOC | After LOC | Delta LOC | Before CC | After CC | Delta CC |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| kernel | 2798 | 1378 | -1420 | 537 | 316 | -221 |
-| assembly | 70 | 113 | 43 | 1 | 22 | 21 |
-| plugins | 0 | 1499 | 1499 | 0 | 288 | 288 |
+| kernel | 2798 | 1407 | -1391 | 537 | 324 | -213 |
+| assembly | 70 | 278 | 208 | 1 | 93 | 92 |
+| plugins | 0 | 1766 | 1766 | 0 | 395 | 395 |
 
 LOC includes comments and blank lines. CC sums module and implemented-function complexities; each starts at 1.
 Decisions: if, for/for-in/for-of, while, do, case, catch, ternary, &&, ||, ??. Nested functions are counted separately.
 Declarations without bodies are excluded. VSCode sources are listed separately. Tests, dependencies and build output are excluded.
 Classification follows paths at each revision; moved implementations change categories. Full per-function data: report.json.
-Only committed Git objects are measured; uncommitted edits are excluded. Regenerate after committing framework changes.
-At final delivery run: npm run metrics -- --from final --to p2. Never move either tag.
+CLI total: LOC 2868 -> 3451; CC 538 -> 812.
+Only committed Git objects are measured; uncommitted edits are excluded. Category movement is not itself a reduction in total code complexity.
+After the final p2 tag exists, reproduce the comparison with: npm run metrics -- --from final --to p2. Never move existing tags.
 
 ## After: CLI file inventory
 
@@ -29,11 +36,16 @@ At final delivery run: npm run metrics -- --from final --to p2. Never move eithe
 | src/commands/DocumentWriter.ts | kernel | 5 | 1 | Editor state, history and command/IO contracts |
 | src/commands/EditorSession.ts | kernel | 54 | 10 | Editor state, history and command/IO contracts |
 | src/commands/HistoryEditCommand.ts | kernel | 13 | 3 | Editor state, history and command/IO contracts |
+| src/core/DirectoryReader.ts | kernel | 10 | 1 | Extension contracts, public API and registry |
 | src/core/ExtensionRegistry.ts | kernel | 60 | 35 | Extension contracts, public API and registry |
-| src/core/extensions.ts | kernel | 73 | 1 | Extension contracts, public API and registry |
-| src/core/index.ts | kernel | 13 | 1 | Extension contracts, public API and registry |
-| src/host/activatePlugin.ts | assembly | 44 | 18 | Startup assembly and activation |
-| src/host/createApplication.ts | assembly | 66 | 3 | Startup assembly and activation |
+| src/core/extensions.ts | kernel | 76 | 1 | Extension contracts, public API and registry |
+| src/core/index.ts | kernel | 14 | 1 | Extension contracts, public API and registry |
+| src/host/activatePlugin.ts | assembly | 48 | 21 | Startup assembly and activation |
+| src/host/codePlugins.ts | assembly | 13 | 2 | Startup assembly and activation |
+| src/host/createApplication.ts | assembly | 69 | 4 | Startup assembly and activation |
+| src/host/plugins/PluginLoader.ts | assembly | 133 | 58 | Startup assembly and activation |
+| src/host/startApplication.ts | assembly | 12 | 7 | Startup assembly and activation |
+| src/infrastructure/NodeDirectoryReader.ts | kernel | 15 | 7 | XML and filesystem adapters |
 | src/infrastructure/SvgFileReader.ts | kernel | 20 | 4 | XML and filesystem adapters |
 | src/infrastructure/SvgFileWriter.ts | kernel | 18 | 3 | XML and filesystem adapters |
 | src/infrastructure/SvgXmlParser.ts | kernel | 190 | 44 | XML and filesystem adapters |
@@ -43,6 +55,8 @@ At final delivery run: npm run metrics -- --from final --to p2. Never move eithe
 | src/model/ShapeFactory.ts | kernel | 27 | 19 | Domain objects and shape dispatch |
 | src/model/SvgDocument.ts | kernel | 335 | 66 | Domain objects and shape dispatch |
 | src/model/SvgElement.ts | kernel | 66 | 16 | Domain objects and shape dispatch |
+| src/plugins/box/BoxShape.ts | plugins | 68 | 30 | Composite domain object and required-part protection |
+| src/plugins/box/index.ts | plugins | 82 | 36 | Box provider, attribute semantics and type label |
 | src/plugins/builtin-commands/HelpCommand.ts | plugins | 19 | 8 | Command registration and help |
 | src/plugins/builtin-commands/commands/AddToCommand.ts | plugins | 21 | 4 | Built-in command behavior |
 | src/plugins/builtin-commands/commands/BackCommand.ts | plugins | 19 | 4 | Built-in command behavior |
@@ -69,6 +83,9 @@ At final delivery run: npm run metrics -- --from final --to p2. Never move eithe
 | src/plugins/builtin-shapes/shapes/Line.ts | plugins | 181 | 28 | Built-in shape behavior |
 | src/plugins/builtin-shapes/shapes/Rect.ts | plugins | 200 | 34 | Built-in shape behavior |
 | src/plugins/builtin-shapes/shapes/Text.ts | plugins | 143 | 27 | Built-in shape behavior |
+| src/plugins/dir/index.ts | plugins | 30 | 14 | Read-only directory command against DirectoryReader |
+| src/plugins/stats/index.ts | plugins | 37 | 12 | Read-only depth-first shape statistics |
+| src/plugins/tree-star/index.ts | plugins | 50 | 15 | Saved-content comparison and dirty tree label |
 
 ## After: VSCode sources (separate)
 

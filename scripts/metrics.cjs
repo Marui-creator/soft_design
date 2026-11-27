@@ -11,8 +11,6 @@ const value = (flag, fallback) => {
     return process.argv[index + 1];
 };
 const git = (...args) => execFileSync("git", args, { cwd: root, encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
-const from = git("rev-parse", "--verify", `${value("--from", "final")}^{commit}`).trim();
-const to = git("rev-parse", "--verify", `${value("--to", "HEAD")}^{commit}`).trim();
 
 function category(file) {
     if (file === "src/main.ts" || file.startsWith("src/host/")) return "assembly";
@@ -27,6 +25,11 @@ function responsibility(file) {
     if (file.includes("builtin-shapes/")) return "Shape provider creation and readback";
     if (file.includes("builtin-commands/commands/")) return "Built-in command behavior";
     if (file.includes("builtin-commands/")) return "Command registration and help";
+    if (file.includes("plugins/box/BoxShape")) return "Composite domain object and required-part protection";
+    if (file.includes("plugins/box/")) return "Box provider, attribute semantics and type label";
+    if (file.includes("plugins/tree-star/")) return "Saved-content comparison and dirty tree label";
+    if (file.includes("plugins/stats/")) return "Read-only depth-first shape statistics";
+    if (file.includes("plugins/dir/")) return "Read-only directory command against DirectoryReader";
     if (file.startsWith("src/core/")) return "Extension contracts, public API and registry";
     if (file.startsWith("src/model/")) return "Domain objects and shape dispatch";
     if (/^src\/commands\/(?:Init|Canvas|Create|Show|Tree|Move|Scale|Set|Delete|AddTo|Group|Ungroup|Front|Back|Undo|Redo|Save|Read)Command\.ts$/.test(file)) return "Legacy built-in command (before extraction)";
@@ -71,18 +74,26 @@ function snapshot(commit) {
         return [name, { files: subset.length, lines: subset.reduce((sum, file) => sum + file.lines, 0),
             complexity: subset.reduce((sum, file) => sum + file.complexity, 0) }];
     }));
-    return { commit, totals, cli: measured.filter((file) => file.file.startsWith("src/")),
+    const cliTotal = Object.fromEntries(["files", "lines", "complexity"].map((key) =>
+        [key, Object.values(totals).reduce((sum, category) => sum + category[key], 0)]));
+    return { commit, totals, cliTotal, cli: measured.filter((file) => file.file.startsWith("src/")),
         vscode: measured.filter((file) => file.file.startsWith("vscode-extension/")) };
 }
+function main() {
+const output = path.join(root, "docs/metrics");
+const from = git("rev-parse", "--verify", `${value("--from", "final")}^{commit}`).trim();
+const to = git("rev-parse", "--verify", `${value("--to", "HEAD")}^{commit}`).trim();
 const before = snapshot(from);
 const after = snapshot(to);
 const report = { before, after, delta: Object.fromEntries(Object.keys(before.totals).map((category) => [category,
     Object.fromEntries(["files", "lines", "complexity"].map((key) => [key, after.totals[category][key] - before.totals[category][key]]))])) };
-const output = path.join(root, "docs/metrics");
 fs.mkdirSync(output, { recursive: true });
 fs.writeFileSync(path.join(output, "report.json"), JSON.stringify(report, null, 2) + "\n");
 const rows = Object.keys(before.totals).map((category) => `| ${category} | ${before.totals[category].lines} | ${after.totals[category].lines} | ${report.delta[category].lines} | ${before.totals[category].complexity} | ${after.totals[category].complexity} | ${report.delta[category].complexity} |`);
-fs.writeFileSync(path.join(output, "README.md"), [
+const markdown = path.join(output, "README.md");
+// Preserve local note metadata on this generated document, if present.
+const note = fs.existsSync(markdown) ? fs.readFileSync(markdown, "utf8").match(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n)*/)?.[0] ?? "" : "";
+fs.writeFileSync(markdown, note + [
     "# CLI metrics (generated)", "", `Before: ${from}`, `After: ${to}`, "",
     "| Category | Before LOC | After LOC | Delta LOC | Before CC | After CC | Delta CC |",
     "| --- | ---: | ---: | ---: | ---: | ---: | ---: |", ...rows, "",
@@ -90,11 +101,18 @@ fs.writeFileSync(path.join(output, "README.md"), [
     "Decisions: if, for/for-in/for-of, while, do, case, catch, ternary, &&, ||, ??. Nested functions are counted separately.",
     "Declarations without bodies are excluded. VSCode sources are listed separately. Tests, dependencies and build output are excluded.",
     "Classification follows paths at each revision; moved implementations change categories. Full per-function data: report.json.",
-    "Only committed Git objects are measured; uncommitted edits are excluded. Regenerate after committing framework changes.",
-    "At final delivery run: npm run metrics -- --from final --to p2. Never move either tag.", "",
+    `CLI total: LOC ${before.cliTotal.lines} -> ${after.cliTotal.lines}; CC ${before.cliTotal.complexity} -> ${after.cliTotal.complexity}.`,
+    "Only committed Git objects are measured; uncommitted edits are excluded. Category movement is not itself a reduction in total code complexity.",
+    "After the final p2 tag exists, reproduce the comparison with: npm run metrics -- --from final --to p2. Never move existing tags.", "",
     "## After: CLI file inventory", "", "| File | Category | LOC | CC | Responsibility |", "| --- | --- | ---: | ---: | --- |",
     ...after.cli.map((file) => `| ${file.file} | ${file.category} | ${file.lines} | ${file.complexity} | ${file.responsibility} |`),
     "", "## After: VSCode sources (separate)", "", "| File | LOC | CC |", "| --- | ---: | ---: |",
     ...after.vscode.map((file) => `| ${file.file} | ${file.lines} | ${file.complexity} |`), "",
 ].join("\n"));
 console.log(`Metrics generated from Git history: ${from} -> ${to}`);
+}
+
+if (require.main === module) {
+    try { main(); }
+    catch (error) { console.error(error.message); process.exitCode = 1; }
+}
