@@ -1,0 +1,27 @@
+@startuml
+title Phase 2: extension contracts and plugin assembly
+package "Host / composition root" as Host
+package "CLI invoker" as CLI
+package "Extension contracts / registry" as Core
+package "Public domain / session / history" as Domain
+package "Built-in shapes and commands" as Builtins
+package "stats / dir / box / tree-star" as Plugins
+package "XML / filesystem adapters" as IO
+Host --> Core : stage, validate, commit
+Host --> Builtins : default assembly
+Host --> Plugins : code assembly
+Host --> Plugins : configuration / module resolution
+Host --> IO : inject services
+Host --> CLI : start
+CLI --> Core : lookup and execute
+Builtins --> Core : implement contracts
+Builtins --> Domain
+Plugins --> Core : public API
+Plugins --> Domain : public domain methods
+IO --> Domain
+Domain ..> Core : ShapeFactory uses interface types
+note bottom of Plugins
+No imports of host or other plugin internals.
+New plugins do not modify the renderer or kernel.
+end note
+@enduml

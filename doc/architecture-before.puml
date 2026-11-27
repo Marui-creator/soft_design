@@ -1,0 +1,19 @@
+@startuml
+title Phase 1: fixed dispatch
+package "main: composition" as Main
+package "CLI + static help" as CLI
+package "Concrete commands" as Commands
+package "ShapeFactory + concrete shapes" as Model
+package "XML / filesystem" as IO
+Main --> CLI
+Main --> Commands
+Main --> Model
+Main --> IO
+CLI --> Commands : Command.execute
+Commands --> Model
+IO --> Model
+note bottom of Model
+ShapeFactory enumerates built-in types.
+New shapes require factory edits.
+end note
+@enduml
